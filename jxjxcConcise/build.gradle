@@ -1,0 +1,143 @@
+apply plugin: 'com.android.application'
+android {
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.yiande.jxjxc"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+
+    lintOptions {
+
+        // true--关闭lint报告的分析进度
+        quiet true
+        // true--错误发生后停止gradle构建
+        abortOnError false
+        // true--只报告error
+        ignoreWarnings true
+        // true--忽略有错误的文件的全/绝对路径(默认是true)
+        //absolutePaths true
+        // true--检查所有问题点，包含其他默认关闭项
+        checkAllWarnings true
+        // true--所有warning当做error
+        warningsAsErrors true
+        // 关闭指定问题检查
+        disable 'TypographyFractions', 'TypographyQuotes'
+        // 打开指定问题检查
+        enable 'RtlHardcoded', 'RtlCompat', 'RtlEnabled'
+        // 仅检查指定问题
+        check 'NewApi', 'InlinedApi'
+        // true--error输出文件不包含源码行号
+        noLines true
+        // true--显示错误的所有发生位置，不截取
+        showAll true
+        // 回退lint设置(默认规则)
+        lintConfig file("default-lint.xml")
+        // true--生成txt格式报告(默认false)
+        textReport true
+        // 重定向输出；可以是文件或'stdout'
+        textOutput 'stdout'
+        // true--生成XML格式报告
+        xmlReport false
+        // 指定xml报告文档(默认lint-results.xml)
+        xmlOutput file("lint-report.xml")
+        // true--生成HTML报告(带问题解释，源码位置，等)
+        htmlReport true
+        // html报告可选路径(构建器默认是lint-results.html )
+        htmlOutput file("lint-report.html")
+        //  true--所有正式版构建执行规则生成崩溃的lint检查，如果有崩溃问题将停止构建
+        checkReleaseBuilds true
+        // 在发布版本编译时检查(即使不包含lint目标)，指定问题的规则生成崩溃
+        fatal 'NewApi', 'InlineApi'
+        // 指定问题的规则生成错误
+        error 'Wakelock', 'TextViewEdits'
+        // 指定问题的规则生成警告
+        warning 'ResourceAsColor'
+        // 忽略指定问题的规则(同关闭检查)
+        ignore 'TypographyQuotes'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+
+        release {
+            // 代码混淆
+            minifyEnabled true
+            // Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+}
+
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation project(path: ':UILibrary')
+    //https://github.com/66254264/PickerLayoutManager
+    implementation project(path: ':picker_layoutmanager')
+    implementation project(path: ':richeditor')
+
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+
+
+
+    // implementation 'com.github.985859:MyLibrary:1.0.1'
+    implementation project(path: ':RetrofitHttp')
+
+    //ViewPager2的依赖
+    implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
+    //配合 TabLayout使用 所用到的相关辅助类
+    implementation 'com.google.android.material:material:1.2.1'
+    //viewpage2 的无限轮播 用法->https://github.com/zguop/banner
+    implementation 'com.to.aboomy:pager2banner:1.0.1' //最新版本
+    //侧滑
+    implementation 'com.github.anzaizai:EasySwipeMenuLayout:1.1.4'
+    //图片选择
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.8'
+    //定位功能
+    implementation 'com.amap.api:location:5.2.0'
+    //权限申请
+    implementation 'pub.devrel:easypermissions:3.0.0'
+    //时间选择器
+    implementation 'com.contrarywind:Android-PickerView:4.1.9'
+    //侧滑
+    implementation 'com.github.anzaizai:EasySwipeMenuLayout:1.1.4'
+    //图片压缩
+    implementation 'com.github.nanchen2251:CompressHelper:1.0.5'
+    implementation 'org.greenrobot:greendao:3.3.0' // 添加库
+
+    //https://github.com/scwang90/SmartRefreshLayout
+    // 注意：分包之后不会有默认的Header和Footer需要手动添加！还是原来的三种方法！
+    implementation 'com.scwang.smart:refresh-layout-kernel:2.0.3'      //核心必须依赖
+    implementation 'com.scwang.smart:refresh-header-classics:2.0.3'    //经典刷新头
+    implementation 'com.scwang.smart:refresh-footer-classics:2.0.3'    //经典加载
+
+}

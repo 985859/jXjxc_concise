@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="comName"
+            type="String" />
+
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.OrderInfoBean" />
+
+        <import type="android.view.View" />
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="750px"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12px">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{String.format(@string/view_out_stock,comName,data.order_Type_Name)}"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_Size2"
+            android:textStyle="bold" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            app:item_leftText=""
+            app:item_leftTextColor="@color/textColor"
+            app:item_leftTextSize="@dimen/text_Size"
+            app:setItemLeftText="@{type==0?@string/out_title0:@string/out_title1}"
+            app:setRightText="@{data.order_ComName}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:orientation="horizontal"
+            android:visibility="@{type==0?View.VISIBLE:View.GONE}">
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8px"
+                android:layout_weight="1"
+                android:visibility="@{StringUtil.isEmpty(data.order_Name)?View.GONE:View.VISIBLE}"
+                app:item_leftText="联系人:"
+                app:item_leftTextColor="@color/textColor"
+                app:item_leftTextSize="@dimen/text_Size"
+                app:setRightText="@{data.order_Name}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:item_leftText="电话:"
+                android:visibility="@{StringUtil.isEmpty(data.order_Mob)?View.GONE:View.VISIBLE}"
+                app:item_leftTextColor="@color/textColor"
+                app:item_leftTextSize="@dimen/text_Size"
+                app:setRightText="@{data.order_Mob}" />
+        </LinearLayout>
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:visibility='@{"1".equals(data.order_IsNo)?View.VISIBLE:View.GONE}'
+            app:item_leftText="单    号:"
+            app:item_leftTextColor="@color/textColor"
+            app:item_leftTextSize="@dimen/text_Size"
+            app:setRightText="@{data.order_No}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:visibility="@{type==0&amp;&amp;StringUtil.isNotEmpty(data.order_Address)?View.VISIBLE:View.GONE}"
+            app:item_leftText="地    址:"
+            app:item_leftTextColor="@color/textColor"
+            app:item_leftTextSize="@dimen/text_Size"
+            app:setRightText="@{data.order_Address}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            app:item_leftText="日    期:"
+            app:item_leftTextColor="@color/textColor"
+            app:item_leftTextSize="@dimen/text_Size"
+            app:setRightText="@{data.order_AddDate}" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4px"
+            android:layout_marginTop="20px"
+            android:background="@drawable/dotted_line" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/viewOutStock_Rec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:layout_marginBottom="10px" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4px"
+            android:background="@drawable/dotted_line" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/outStock_KgAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:visibility="@{type==0&amp;&amp;data.isPrintKg==1?View.VISIBLE:View.GONE}"
+            app:item_leftText="重 量 合 计:"
+            app:item_leftTextBold="true"
+            app:item_leftTextColor="@color/textColor"
+            app:item_leftTextSize="@dimen/text_Size"
+            app:item_rightTextBold="true"
+            app:setRightText="@{String.format(@string/kg,data.order_KgAmount)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/outStock_Amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            app:item_leftText="合           计:"
+            app:item_leftTextBold="true"
+            app:item_leftTextColor="@color/textColor"
+            app:item_leftTextSize="@dimen/text_Size"
+            app:item_rightTextBold="true"
+            app:setRightText="@{String.format(@string/rmb,data.order_Amount)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/outStock_PayableAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            app:item_leftText="应        收:"
+            app:item_leftTextBold="true"
+            app:item_leftTextColor="@color/textColor"
+            app:item_leftTextSize="@dimen/text_Size"
+            app:item_rightTextBold="true"
+            app:setRightText="@{String.format(@string/rmb_dx,data.Order_PayableAmount,data.Order_PayableAmount_Daxie)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/outStock_RealyAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            app:item_leftText="实        收:"
+            app:item_leftTextBold="true"
+            app:item_leftTextColor="@color/textColor"
+            app:item_leftTextSize="@dimen/text_Size"
+            app:item_rightTextBold="true"
+            app:setRightText="@{String.format(@string/rmb_dx,data.Order_RealyAmount,data.Order_RealyAmount_Daxie)}" />
+
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/outStock_Debt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:visibility="@{data.isPrintDebt==1?View.VISIBLE:View.GONE}"
+            app:item_leftText="赊        账:"
+            app:item_leftTextBold="true"
+            app:item_leftTextColor="@color/textColor"
+            app:item_leftTextSize="@dimen/text_Size"
+            app:item_rightTextBold="true"
+            app:setRightText="@{String.format(@string/rmb_dx,data.Order_Debt,data.Order_Debt_Daxie)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/outStock_AllDebt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:visibility="@{data.isPrintDebtAll==1?View.VISIBLE:View.GONE}"
+            app:item_leftText="赊        账:"
+            app:item_leftTextBold="true"
+            app:item_leftTextColor="@color/textColor"
+            app:item_leftTextSize="@dimen/text_Size"
+            app:item_rightTextBold="true"
+            app:setRightText="@{String.format(@string/rmb_dx,data.user_AllDebt,data.user_AllDebt_Daxie)}" />
+
+        <TextView
+            android:id="@+id/outStock_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_Size" />
+
+    </LinearLayout>
+</layout>

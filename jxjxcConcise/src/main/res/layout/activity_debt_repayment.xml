@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="memo"
+            type="String" />
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+
+        <variable
+            name="showRec"
+            type="Boolean" />
+
+        <variable
+            name="repayMoney"
+            type="String" />
+
+        <import type="android.view.View" />
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.DebtRepaymentActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/debtRepayment_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_Title="@string/client_repayment"
+            app:setToptTilte="@{type==2?@string/supplier_repayment:@string/client_repayment}" />
+
+        <include layout="@layout/layout_must" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <com.yiande.jxjxc.view.ItemTextView
+                        style="@style/ViewStyle"
+                        android:text="@{name}"
+                        app:title="@{type==2?@string/supplier_name:@string/client_name}" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout style="@style/ViewStyle">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{Util.setMustTilte("还款单")}'
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/text_Size3"
+                            app:layout_constraintBottom_toBottomOf="@+id/debtRepayment_Add"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/debtRepayment_Add" />
+
+                        <com.mylibrary.api.widget.VariedTextView
+                            android:id="@+id/debtRepayment_Add"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->onClick.accept(0)}"
+                            android:paddingStart="12dp"
+                            android:paddingTop="2dp"
+                            android:paddingEnd="12dp"
+                            android:paddingBottom="2dp"
+                            android:text="@{type==2?@string/selceat_debt2:@string/selceat_debt}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_Size2"
+                            app:attr_background="@color/blue"
+                            app:attr_cornersRaius="@dimen/radius2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/debtRepayment_Rec"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="6dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/debtRepayment_Add" />
+
+                        <TextView
+                            android:id="@+id/debtRepayment_Add2"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_marginTop="@dimen/margin3"
+                            android:background="@drawable/layout_background_8"
+                            android:gravity="center"
+                            android:onClick="@{()->onClick.accept(0)}"
+                            android:text="@{type==2?@string/selceat_debt2:@string/selceat_debt}"
+                            android:textColor="@color/contentColor"
+                            android:textSize="@dimen/text_Size2"
+                            android:visibility="@{showRec?View.GONE:View.VISIBLE}"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/debtRepayment_Add" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/debtRepayment_Money"
+                        style="@style/ViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:priceView_Edit="false"
+                        app:priceView_ShowLine="false"
+                        app:setEditText='@{"0"}'
+                        app:title="@{type==2?@string/selceat_debt_amount2:@string/selceat_debt_amount}" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/debtRepayment_RepayMoney"
+                        style="@style/ViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/repayment_hint"
+                        app:must="1"
+                        app:priceView_ShowLine="false"
+                        app:setEditText="@={repayMoney}"
+                        app:title="@string/repayment_amount" />
+                </LinearLayout>
+
+                <com.yiande.jxjxc.view.EditLengthView
+                    style="@style/LayoutStyle"
+                    android:hint="@string/memo_hint"
+                    android:maxLength="300"
+                    app:setEditText="@={memo}"
+                    app:title="@string/memo" />
+
+
+                <Button
+                    android:id="@+id/debtRepayment_BT"
+                    style="@style/buttonStyle"
+                    android:onClick="@{()->onClick.accept(1)}" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+</layout>

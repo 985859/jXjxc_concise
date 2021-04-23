@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="showRec"
+            type="Boolean" />
+
+        <variable
+            name="string"
+            type="String" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.AZListActivity">
+
+        <com.mylibrary.api.widget.TopSearchView
+            android:id="@+id/AZList_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:topSearchBackground="@drawable/search_background"
+            app:topSearchHins="输入名称搜索"
+            app:topSearchHinsColor="@color/gray3"
+            app:topSearchRightTextColor="@color/white" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/azList_Rec"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="6dp" />
+
+                <com.yiande.jxjxc.azlist.AZWaveSideBarView
+                    android:id="@+id/azList_BarRec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="40dp"
+                    android:paddingTop="40dp"
+                    android:paddingBottom="40dp"
+                    app:backgroundColor="@color/empty"
+                    app:hintCircleColor="@color/blue"
+                    app:hintCircleRadius="18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:selectTextColor="@color/white"
+                    app:strokeColor="@color/empty"
+                    app:textColor="@color/blue"
+                    app:textSize="10sp"
+                    app:waveColor="@color/empty" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/AZList_SelectRec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@color/white"
+                android:visibility="@{showRec?View.VISIBLE:View.GONE}" />
+        </FrameLayout>
+
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,472 @@
+<resources>
+
+    <string name="yiande">易安德电子商务有限公司 yiande</string>
+    <string name="copyright" translatable="false">Copyright © 2020   易安德 Yiande  </string>
+    <string name="com_tel">400-168-6777</string>
+    <string name="hint_user_mob">请输入手机号或电话</string>
+    <string name="mob">手机号</string>
+    <string name="name">姓名</string>
+    <string name="hint_tel">请输入手机号码</string>
+    <string name="user_name">用户名</string>
+    <string name="hint_user">请输入用户名</string>
+    <string name="login">登 录</string>
+    <string name="hint_code">请输入验证码</string>
+    <string name="hint_password">请输入密码</string>
+    <string name="get_code">获取验证码</string>
+    <string name="delear">删除</string>
+    <string name="cancel">取消</string>
+    <string name="amend">修改</string>
+    <string name="user_add2">添加供应商</string>
+    <string name="amend_user">修改客户资料</string>
+    <string name="amend_user2">修改供应商资料</string>
+    <string name="add">新增</string>
+
+    <string name="set">设置</string>
+    <string name="set_ip">请输入IP地址:</string>
+    <string name="set_inter">请输入网址:</string>
+    <string name="hint_url">请输入 url 地址</string>
+
+
+    <string name="app_name">建机管家</string>
+    <string name="app_name2">易安德建机管家</string>
+    <string name="plus">＋ %s</string>
+
+    <string name="today_income">今日收入</string>
+    <string name="month_income">本月收入</string>
+
+    <string name="must_text">标 * 内容为必填内容</string>
+    <string name="max_pic">点击下方按钮上传图片, 最多上传 %d 张</string>
+    <string name="reset">重置</string>
+    <string name="condition_select">条件筛选</string>
+
+    <string name="login_name">登录名</string>
+    <string name="login_password">登陆密码</string>
+
+    <string name="admin_add">添加员工</string>
+    <string name="admin_name">姓名</string>
+    <string name="admin_name_hint">请输入员工姓名</string>
+    <string name="admin_password">密码</string>
+    <string name="admin_password_hint">请输入登录密码</string>
+    <string name="admin_password2">确认密码</string>
+    <string name="admin_password2_hint">请再次输入确认密码</string>
+    <string name="admin_tel_hint">请输入联系电话</string>
+    <string name="admin_type">员工身份</string>
+    <string name="admin_type1">员工</string>
+    <string name="admin_type2">管理员</string>
+
+    <string name="state">状态</string>
+    <string name="Permission">权限</string>
+    <string name="MultiSelect">多选</string>
+    <string name="admin_amend">修改管理员</string>
+
+    <string name="isAdmin">是否操作人</string>
+    <string name="hint_select">请输入搜索内容</string>
+    <string name="user_add">添加客户</string>
+    <string name="user_Name">客户名称</string>
+
+
+    <string name="edit">编辑</string>
+    <string name="type">类别</string>
+    <string name="new_sell">新出库</string>
+    <string name="new_user">新客户</string>
+    <string name="new_buy">新入库</string>
+    <string name="warning">库存预警</string>
+
+
+    <string name="comName">公司名称</string>
+    <string name="comAddress">公司地址</string>
+    <string name="LinkMan">联系人</string>
+    <string name="LinkMan_name">联系人姓名</string>
+    <string name="LinkMan_hint">请输入联系人姓名</string>
+    <string name="linkMan_Tel">联系电话</string>
+    <string name="tel">备用电话</string>
+    <string name="tel_hint1">请输入客户备用电话</string>
+    <string name="tel_hint2">请输入供应商备用电话</string>
+
+    <string name="memo">备注</string>
+    <string name="memo_hint">请输入备注内容</string>
+    <string name="memo_no">暂无备注</string>
+
+    <string name="computer">确认</string>
+    <string name="computer_post">确认提交</string>
+    <string name="computer_amend">确认修改</string>
+
+    <string name="unit_add">新增单位</string>
+    <string name="unit">单位管理</string>
+
+    <string name="add_class">新增分类</string>
+    <string name="calssfity">分类管理</string>
+
+    <string name="brand_add">新增品牌</string>
+    <string name="brand">产品品牌</string>
+
+    <string name="user_select">请点击选择客户</string>
+    <string name="address">地址</string>
+    <string name="logistics_address">物流地址</string>
+    <string name="address_hint1">请输入客户联系地址</string>
+
+    <string name="client">客户</string>
+    <string name="client_name">客户名称</string>
+    <string name="client_hint_ComName">请输入客户名称</string>
+    <string name="client_hint_Name">请输入客户联系人姓名</string>
+    <string name="client_hint_Tel">请输入客户联系电话</string>
+    <string name="client_hint_LinkMan">请输入客户联系人</string>
+    <string name="client_hint_ComAddress">请输入客户公司所在地址</string>
+    <string name="client_hint_Address">请输入客户联系地址</string>
+    <string name="client_Class">客户分类</string>
+    <string name="client_Class_Hint">请点击选择客户分类</string>
+    <string name="client_Class_Add">添加客户分类</string>
+    <string name="client_Level">客户级别</string>
+    <string name="client_Level_spec">最低级别为V1级别</string>
+    <string name="client_yu_e">客户余额</string>
+    <string name="client_debt">客户欠款</string>
+    <string name="client_balance_recharge">客户充值</string>
+    <string name="client_balance_recharge2">客户扣款</string>
+    <string name="client_balance_amount">客户充值金额</string>
+    <string name="client_balance_amount2">客户扣款金额</string>
+    <string name="client_balance_hint">请输入要充值的金额</string>
+    <string name="client_balance_hint2">请输入要扣款的金额</string>
+    <string name="client_detail">客户详情</string>
+    <string name="client_recharge">客户充值</string>
+    <string name="client_recharge2">客户扣款</string>
+    <string name="client_repayment">客户还款</string>
+    <string name="client_balance_title">%s余额</string>
+    <string name="client_select">客户还款选择</string>
+    <string name="client_address">客户地址</string>
+    <string name="client_address_add">添加客户地址</string>
+    <string name="client_address_add2">添加客户物流地址</string>
+    <string name="client_address_hint">请点击输入客户所在地址</string>
+    <string name="client_address_hint2">请点击输入客户物流地址</string>
+
+
+    <string name="supplier">供应商</string>
+    <string name="supplier_name">供应商名称</string>
+    <string name="supplier_select">请点击选择供应商</string>
+    <string name="supplier_hint_ComName">请输入供应商名称</string>
+    <string name="supplier_hint_Tel">请输入供应商联系电话</string>
+    <string name="supplier_hint_LinkMan">请输入供应商联系人</string>
+    <string name="supplier_Class">供应商分类</string>
+    <string name="supplier_Class_Hint">请点击选择供应商分类</string>
+    <string name="supplier_Class_Add">添加供应商分类</string>
+    <string name="supplier_hint_ComAddress">请输入供应商公司所在地址</string>
+    <string name="supplier_detail">供应商详情</string>
+    <string name="supplier_repayment">供应商还款</string>
+    <string name="supplier_repayment_select">供应商还款选择</string>
+    <string name="supplier_address">供应商地址</string>
+    <string name="supplier_address_add">添加供应商地址</string>
+    <string name="supplier_address_add2">添加供应商物流地址</string>
+    <string name="supplier_address_hint">请点击输入供应商所在地址</string>
+    <string name="supplier_address_hint2">请点击输入供应商物流地址</string>
+
+
+    <string name="enable">启用</string>
+    <string name="disable">禁用</string>
+    <string name="sellAM">销售顾问</string>
+    <string name="sell_select">请点击选择销售顾问</string>
+    <string name="audit_opposite">反审核</string>
+
+    <string name="recharge">充值</string>
+    <string name="recharge_amount">充值金额</string>
+    <string name="recharge_time">充值时间</string>
+
+
+    <string name="top_up">充值余额</string>
+    <string name="YuEDetail">余额明细</string>
+    <string name="DebtDetail">欠款明细</string>
+    <string name="sh_amount">赊账金额</string>
+    <string name="sh_detail">赊账明细</string>
+    <string name="class_add">添加分类</string>
+    <string name="class_amend">修改分类</string>
+    <string name="add_to">添加至</string>
+    <string name="amend_to">修改至</string>
+
+    <string name="common">普通</string>
+    <string name="retail">散户</string>
+    <string name="retai12">散客</string>
+    <string name="v1">V1</string>
+    <string name="v2">V2</string>
+    <string name="v3">V3</string>
+    <string name="v4">V4</string>
+
+    <string name="product_class">产品类别</string>
+    <string name="product_class_add">添加产品分类</string>
+    <string name="product_class_select">请点击选择产品类别</string>
+    <string name="product_brand">产品品牌</string>
+    <string name="product_brand_add">添加产品品牌</string>
+    <string name="product_brand_select">请点击选择产品品牌</string>
+    <string name="product_unit">产品单位</string>
+    <string name="product_unit_add">添加产品单位</string>
+    <string name="product_unit_select">请点击选择产品单位</string>
+    <string name="product_Name">产品名称</string>
+    <string name="product_model">产品规格</string>
+    <string name="product_pic">产品图片</string>
+    <string name="product_add">新增产品</string>
+    <string name="product_detail">产品详情</string>
+    <string name="product_hint_name">请输入产品名称</string>
+    <string name="product_Size">规格</string>
+    <string name="prodct_hint_size">请输入产品规格/型号/颜色/重量</string>
+    <string name="product_purchase_price">进货价</string>
+    <string name="product_purchase_price2">产品进货价格</string>
+    <string name="product_purchasePrice_hint">请输入进货价格</string>
+    <string name="product_Price">销售价</string>
+    <string name="product_Price2">为对%s客户售价</string>
+    <string name="product_Price_hint">请输入%s销售价</string>
+    <string name="product_sell_preice">售价</string>
+    <string name="product_inventory">库存</string>
+    <string name="hint_inventory">请输入产品库存</string>
+    <string name="product_inventory_warn">库存预警</string>
+    <string name="product_hint_Inventorywarn">请输入库存预警值</string>
+    <string name="product_explain">产品说明</string>
+    <string name="product_exlain_hint">请输入产品特点、用途、作用</string>
+    <string name="product_kg">重量(Kg)</string>
+    <string name="kg_amunt">重量合计</string>
+    <string name="kg_amunt_sub">为所有出库产品重量之和</string>
+    <string name="kg_amunt2">重量小计</string>
+    <string name="kg_amunt2_original">原重量小计</string>
+    <string name="weight">重量</string>
+    <string name="weight_original">原重量</string>
+    <string name="kg">%s Kg</string>
+    <string name="product_Kg_hint">请输入产品重量, 保留3为小数</string>
+    <string name="product_state">产品状态</string>
+    <string name="product_InventoryState">库存状态</string>
+
+    <string name="stock_selct_out">选择出库</string>
+    <string name="stock_selct_int">选择入库</string>
+
+    <string name="stock_in">入库单</string>
+    <string name="stock_in_order_no">入库单号</string>
+    <string name="stock_in_type">入库类型</string>
+    <string name="stock_in_detail">入库详情</string>
+    <string name="stock_in_product">入库产品</string>
+
+    <string name="stock_out">出库单</string>
+    <string name="stock_out_product">出库产品</string>
+    <string name="stock_out_type">出库类型</string>
+    <string name="stock_out_detail">出库详情</string>
+    <string name="stock_out_order_no">出库单号</string>
+
+    <string name="stock_type1">进货</string>
+    <string name="stock_type2">报溢</string>
+    <string name="stock_type3">出库</string>
+    <string name="stock_type4">报损</string>
+
+
+    <string name="handlerName">经手人</string>
+    <string name="stock_original_number">原始入库单号</string>
+    <string name="stock_OriginalNumber_hint">请输入原始入库单号</string>
+    <string name="stock_original_Pic">原始入库单照片</string>
+
+
+    <string name="product_in_stock">新增产品入库</string>
+    <string name="product_out_stock">新增产品出库</string>
+
+    <string name="all_pay">总实付</string>
+    <string name="all_receipt">总实收</string>
+    <string name="all_amout">合计金额</string>
+    <string name="all_amout_sub">合计金额为产品小计之和</string>
+    <string name="payable_amout">应付金额</string>
+    <string name="payable_amout_sub">应付金额为最终确定总金额</string>
+    <string name="payable_amout_hint">请输入应付金额</string>
+    <string name="receivable_amount">应收金额</string>
+    <string name="receivable_amount_sub">应收金额为最终确定总金额</string>
+    <string name="receivable_amount_hint">请输入应收金额</string>
+    <string name="freight_amout">运费金额</string>
+    <string name="freight_amout_sub">运费金额为产品运输产生的费用</string>
+    <string name="freight_amout_hint">请输入运费金额</string>
+    <string name="buy_amount">实际付款金额</string>
+    <string name="amount_sub4">实付金额为下方四种付款途径之和</string>
+
+    <string name="actual_amount">实际收款金额</string>
+    <string name="actual_amount2">实收金额</string>
+    <string name="actual_amount_sub4">实收金额为下方四种付款途径之和</string>
+    <string name="actual_amount_sub5">实收金额为下方五种付款途径之和</string>
+    <string name="cash">现金金额</string>
+    <string name="bank">银行转账金额</string>
+    <string name="aliplay">支付宝金额</string>
+    <string name="wechat">微信金额</string>
+    <string name="hint_amount">请输入金额</string>
+    <string name="remain_dedcut">扣除余额</string>
+    <string name="remain_dedcut_time">扣款时间</string>
+    <string name="remain">可用余额</string>
+    <string name="all_amount">总收款额</string>
+    <string name="all_pay_amount">总付款额</string>
+
+    <string name="on_credit">赊账</string>
+    <string name="on_credit_add">新增赊账</string>
+    <string name="on_creditTitle">新增赊账记录</string>
+    <string name="on_creditAmount">赊账金额</string>
+
+    <string name="on_creditAmount_hint">请输入赊账金额</string>
+    <string name="on_credit_all">历史赊账总金额</string>
+    <string name="on_credit_all2">总赊账金额</string>
+    <string name="on_credit_all3">赊账总额</string>
+    <string name="on_creditAmount2">当前赊账金额</string>
+    <string name="on_creditAmount3">当前赊账</string>
+    <string name="on_credit_time">赊账时间</string>
+    <string name="on_credit_original">原始赊账</string>
+    <string name="on_credit_no">赊账单号</string>
+    <string name="on_credit_statistics">赊账统计</string>
+    <string name="on_credit_supplier">赊账供应商</string>
+    <string name="on_credit_detail">赊账详情</string>
+
+    <string name="debt">欠款</string>
+    <string name="debt_add">新增欠款</string>
+    <string name="debt_Amount">欠款金额</string>
+    <string name="debt_Amount2">当前欠款金额</string>
+    <string name="debt_Amount3">当前欠款</string>
+    <string name="debt_original">原始欠款</string>
+    <string name="debt_Amount_hint">请输入欠款金额</string>
+    <string name="debt_all">历史欠款金额</string>
+    <string name="debt_all2">总欠款金额</string>
+    <string name="debt_all3">欠款总额</string>
+    <string name="debt_1">赊账</string>
+    <string name="debt_2">欠款</string>
+    <string name="debt_addTitle">新增欠款记录</string>
+    <string name="debt_time">欠款时间</string>
+    <string name="debt_no">欠款单号</string>
+    <string name="debt_statistics">欠款统计</string>
+    <string name="debt_client">欠款客户</string>
+    <string name="debt_detail">欠款详情</string>
+    <string name="deduct_money">扣款</string>
+    <string name="deduct_money1">消费</string>
+    <string name="deduct_money_amount">扣款金额</string>
+    <string name="deduct_money_time">扣款时间</string>
+
+    <string name="have_to_repay">已偿还金额</string>
+    <string name="confirm_recharge">确认充值</string>
+    <string name="confirm_recharge2">确认扣款</string>
+
+    <string name="repayment_add">新增还款</string>
+    <string name="repayment_amount">还款金额</string>
+    <string name="repayment_time">还款时间</string>
+    <string name="repayment_post">提交还款</string>
+    <string name="repayment_hint">请输入还款金额</string>
+    <string name="repayment_memo">还款备注</string>
+    <string name="repayment_memo_hint">请输入还款备注</string>
+
+    <string name="hint_pro_number">请输入产品数量</string>
+    <string name="hint_pro_price">请输入产品进货价格</string>
+    <string name="hint_pro_price2">请输入产品价格</string>
+
+    <string name="out_price">出库价</string>
+    <string name="in_price">进货价</string>
+    <string name="all">全部</string>
+    <string name="pay_off">结清</string>
+    <string name="pay_off_not">未结清</string>
+
+
+    <string name="number">数量</string>
+    <string name="number_original">原数量</string>
+    <string name="unit_price">单价</string>
+    <string name="unit_price_original">原单价</string>
+
+    <string name="subtotal">小计</string>
+    <string name="subtotal_original">原小计</string>
+
+    <string name="in_time">入库时间</string>
+    <string name="select_in_time">点击选择入库时间</string>
+
+    <string name="no">单号</string>
+    <string name="add_time">添加时间</string>
+    <string name="home_4">新品入库第一步,先添加产品再入库</string>
+
+    <string name="hint_out_amount">请输入出库实付金额</string>
+    <string name="out_amount">实付金额( 元 )</string>
+    <string name="out_amount2">实付金额</string>
+    <string name="out_time">出库时间</string>
+    <string name="select_out_time">请选择出库时间</string>
+    <string name="user">客户</string>
+
+
+    <string name="amend_password">修改密码</string>
+    <string name="password">新密码</string>
+    <string name="intput_password">请输入新密码</string>
+    <string name="confrim_password">确认新密码</string>
+    <string name="intput_confrim_password">请输入确认新密码</string>
+    <string name="FreightAmount">运费</string>
+    <string name="hint_FreightAmount">请输入运费</string>
+    <string name="view_out_stock">%s  %s</string>
+    <string name="rmb">¥%s</string>
+    <string name="rmb_dx">¥%s%s</string>
+    <string name="number_no">编    号:%s</string>
+    <string name="out_title0">客    户:</string>
+    <string name="out_title1">供应商:</string>
+    <string name="hint_hong">请输入红冲具体原因</string>
+    <string name="hong_title0">出库单红冲</string>
+    <string name="hong_title1">入库单红冲</string>
+    <string name="begin_time">开始时间</string>
+    <string name="end_time">结束时间</string>
+
+    <string name="employee_add_title">添加员工</string>
+    <string name="employee_amend_title">修改员工</string>
+    <string name="employee_name">员工姓名</string>
+    <string name="employee_name_hint">请输入员工姓名</string>
+    <string name="employee_Tel_hint">请输入员工联系电话</string>
+    <string name="employee_detail">员工详情</string>
+    <string name="index">序号 %s</string>
+    <string name="selceat_debt">+ 点击选择欠款</string>
+    <string name="selceat_debt2">+ 点击选择赊账</string>
+    <string name="selceat_debt_amount">所选欠款金额</string>
+    <string name="selceat_debt_amount2">所选赊账金额</string>
+    <string name="esc">退出登录</string>
+
+    <string name="other_amount">其余开销</string>
+    <string name="charge_fees">费用收取</string>
+
+    <string name="maintain">维修</string>
+    <string name="maintain_amount">维修金额</string>
+    <string name="maintain_employee">维修人员</string>
+    <string name="maintain_employee_hit">请点击选择维修人员</string>
+    <string name="maintain_date">维修时间</string>
+    <string name="maintain_begin">维修开始时间</string>
+    <string name="maintain_begin_hit">请点击选择维修开始时间</string>
+    <string name="maintain_end">维修结束时间</string>
+    <string name="maintain_end_hit">请点击选择维修结束时间</string>
+    <string name="maintain_product_money">产品维修开销</string>
+    <string name="maintain_amount2">维修开销合计</string>
+    <string name="maintain_spending">维修开销</string>
+    <string name="maintain_profit">维修利润</string>
+    <string name="maintain_quantity">维修数量</string>
+    <string name="maintain_quantity_hint">请输入需要维修产品的数量</string>
+    <string name="maintain_cost">维修成本</string>
+    <string name="maintain_cost_hint">请输入该机器合计维修成本</string>
+    <string name="maintain_detail">维修详情</string>
+
+    <string name="fault_sketch">故障简述</string>
+    <string name="fault_sketch_hint">请简单描述故障问题</string>
+
+    <string name="after_service_no">售后单号</string>
+    <string name="after_service_date">售后时间</string>
+    <string name="after_service_type">售后类型</string>
+    <string name="after_service_product">售后产品</string>
+    <string name="after_service_add">新增售后</string>
+    <string name="after_other_amount_hint">请输入售后其余开销</string>
+    <string name="after_charge_fees_hint">请输入收取的售后服务费用</string>
+    <string name="after_service_pic">售后相关图片</string>
+    <string name="after_service_detail">售后详情记录</string>
+    <string name="after_service_detail2">售后详情</string>
+    <string name="after_service_detail_hint">请点击添加售后详情记录</string>
+    <string name="after_service_detail_hint2">请点击查看售后详情记录</string>
+    <string name="after_service_product_list">售后产品列表</string>
+
+    <string name="cancellation">(作废)</string>
+    <string name="cancellation_why">作废原因</string>
+
+    <string name="invoice_add">新增发票</string>
+    <string name="invoice_pic">原始发票照片</string>
+    <string name="invoice_amount">发票金额</string>
+    <string name="invoice_amount_hint">请输入发票金额</string>
+    <string name="invoice_all_amount">发票总金额</string>
+    <string name="invoice_state">开票状态</string>
+    <string name="invoice_date">出票时间</string>
+    <string name="invoice_name">出票人</string>
+    <string name="invoice_list">发票列表</string>
+    <string name="invoice_type">停止出票</string>
+    <string name="invoice_del">作废此发票</string>
+    <string name="invoice_type1">出票中</string>
+    <string name="invoice_record">发票记录</string>
+    <string name="address_com">公司地址</string>
+    <string name="address_send">送货地址</string>
+
+
+</resources>

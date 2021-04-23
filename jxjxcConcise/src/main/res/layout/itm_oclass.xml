@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding1"
+        android:background="@drawable/layout_white_8"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/itmOClass_VTop"
+            android:layout_width="0dp"
+            android:layout_height="2px"
+            android:background="@drawable/line_2px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/itmOClass_V1"
+            android:layout_width="10dp"
+            android:layout_height="2px"
+            android:layout_gravity="center_vertical"
+            android:background="@color/contentColor"
+            app:layout_constraintBottom_toBottomOf="@+id/itmOClass_Title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/itmOClass_Title" />
+
+        <TextView
+            android:id="@+id/itmOClass_Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin1"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:minHeight="24dp"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toStartOf="@+id/itmOClass_Mroe"
+            app:layout_constraintStart_toEndOf="@+id/itmOClass_V1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/itmOClass_Mroe"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:src="@drawable/more"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmOClass_Title"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/itmOClass_V2"
+            android:layout_width="2px"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin1"
+            android:background="@color/contentColor"
+            app:layout_constraintBottom_toBottomOf="@+id/itmOClass_Rec"
+            app:layout_constraintStart_toEndOf="@+id/itmOClass_V1"
+            app:layout_constraintTop_toTopOf="@+id/itmOClass_Add" />
+
+        <com.mylibrary.api.widget.VariedTextView
+            android:id="@+id/itmOClass_Add"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/margin1"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="@dimen/margin1"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/padding3"
+            android:paddingEnd="@dimen/padding3"
+            android:text="添加二级分类"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_Size2"
+            app:attr_background="@color/blue"
+            app:attr_cornersRaius="@dimen/radius2"
+            app:attr_drawableRightHeight="22dp"
+            app:attr_drawableRightWidth="22dp"
+            app:layout_constraintBottom_toTopOf="@+id/itmOClass_Rec"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmOClass_Title"
+            app:layout_goneMarginBottom="@dimen/margin1"
+            app:layout_goneMarginTop="@dimen/margin1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/itmOClass_Rec"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmOClass_V2"
+            app:layout_constraintTop_toBottomOf="@+id/itmOClass_Add" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

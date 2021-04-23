@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="text"
+            type="String" />
+
+        <variable
+            name="color"
+            type="Integer" />
+
+        <variable
+            name="textColor"
+            type="Integer" />
+    </data>
+
+    <LinearLayout
+        style="@style/ViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="50dp"
+            android:text="@{title}"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/text_Size2" />
+
+
+        <com.mylibrary.api.widget.VariedTextView
+            android:id="@+id/stockOrder_Type1"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:minWidth="78dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@{text}"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_Size2"
+            app:attr_background="@color/blue"
+            app:attr_cornersRaius="@dimen/radius2"
+            app:setBackgroundColor="@{color}"
+            app:setTextColor="@{textColor==0?@color/white:textColor}" />
+
+    </LinearLayout>
+</layout>

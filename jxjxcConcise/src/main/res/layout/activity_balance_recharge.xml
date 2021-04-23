@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <!--0  充值 1 扣款 -->
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="money"
+            type="String" />
+
+        <variable
+            name="memo"
+            type="String" />
+
+        <variable
+            name="comName"
+            type="String" />
+
+        <variable
+            name="balance"
+            type="String" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.BalanceRechargeActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/balanceRecharge_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:setToptTilte="@{type==0?@string/client_balance_recharge:@string/client_balance_recharge2}" />
+
+        <include layout="@layout/layout_must" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:layout_marginBottom="20dp"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <com.yiande.jxjxc.view.ItemTextView
+                        style="@style/ViewStyle"
+                        android:text="@{comName}"
+                        app:title="客户名称" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        style="@style/ViewStyle"
+                        app:priceView_Edit="false"
+                        app:setEditText="@={balance}"
+                        app:title="当前余额" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/balanceRecharge_Money"
+                        style="@style/ViewStyle"
+                        android:hint="@{type==0?@string/client_balance_hint:@string/client_balance_hint2}"
+                        app:must="1"
+                        app:priceView_ShowLine="false"
+                        app:setEditText="@={money}"
+                        app:title="@{type==0?@string/client_balance_amount:@string/client_balance_amount2}" />
+                </LinearLayout>
+
+                <com.yiande.jxjxc.view.EditLengthView
+                    style="@style/LayoutStyle"
+                    android:hint="@string/memo_hint"
+                    android:maxLength="300"
+                    app:setEditText="@={memo}"
+                    app:title="@string/memo" />
+
+
+                <TextView
+                    android:id="@+id/balanceRecharge_BT"
+                    style="@style/buttonStyle"
+                    android:gravity="center"
+                    android:text="@{type==0?@string/confirm_recharge:@string/confirm_recharge2}"
+                    android:textSize="@dimen/text_Size3" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

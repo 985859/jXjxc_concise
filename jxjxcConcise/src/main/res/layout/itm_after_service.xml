@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.AfterServiceRowsBean" />
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+
+        <import type="android.view.View" />
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:background="@drawable/layout_white_20"
+        android:orientation="vertical"
+        android:padding="@dimen/padding3">
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:item_leftText="@string/after_service_no"
+            app:item_leftTextColor="@color/gray4"
+            app:item_leftTextMinWidth="50dp"
+            app:item_leftTextSize="@dimen/text_Size2"
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size3"
+            app:setRightText="@{data.no}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:item_leftText="@string/maintain_employee"
+            app:item_leftTextColor="@color/gray4"
+            app:item_leftTextMinWidth="50dp"
+            app:item_leftTextSize="@dimen/text_Size2"
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size3"
+            app:setRightText="@{data.adminName}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:baselineAligned="false"
+            app:item_leftText="@string/maintain_amount"
+            app:item_leftTextColor="@color/gray4"
+            app:item_leftTextMinWidth="50dp"
+            app:item_leftTextSize="@dimen/text_Size2"
+            app:item_rightTextColor="@color/red"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size3"
+            app:setRightText="@{Util.setPrice(data.money)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:item_leftText="@string/after_service_date"
+            app:item_leftTextColor="@color/gray4"
+            app:item_leftTextMinWidth="50dp"
+            app:item_leftTextSize="@dimen/text_Size2"
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size3"
+            app:setRightText="@{data.addDate}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:item_leftText="@string/client"
+            app:item_leftTextColor="@color/gray4"
+            app:item_leftTextMinWidth="50dp"
+            app:item_leftTextSize="@dimen/text_Size2"
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size3"
+            app:setRightText="@{data.comName}" />
+
+
+    </LinearLayout>
+</layout>

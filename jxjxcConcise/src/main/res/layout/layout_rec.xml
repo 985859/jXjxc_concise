@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="must"
+            type="Integer" />
+        <variable
+            name="title"
+            type="String" />
+        <import type="com.yiande.jxjxc.utils.Util" />
+    </data>
+
+    <LinearLayout
+        style="@style/ViewStyle"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Layout_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{must==1?Util.setMustTilte(title):title}"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/text_Size3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Layout_Rec"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_margin="4dp" />
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.ProductListBean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.ProductListActivity">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_wihte_bottom_20"
+            android:orientation="vertical">
+
+            <com.mylibrary.api.widget.TopSearchView
+                android:id="@+id/productList_Top"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/topHight"
+                android:background="@drawable/top_background"
+                app:topSearchBackground="@drawable/search_background"
+                app:topSearchHins="输入产品 名称/规格 搜索"
+
+                app:topSearchRightText="@string/add"
+                app:topSearchRightTextColor="@color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <com.mylibrary.api.widget.ItemView
+                    android:id="@+id/productList_Class"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    app:gravity="center"
+                    app:item_rightIcon="@drawable/down_up"
+                    app:item_rightIconHeight="8dp"
+                    app:item_rightIconPadding="4dp"
+                    app:item_rightIconWidth="8dp"
+                    app:item_rightText="产品分类"
+                    app:item_rightTextMaxLine="1"
+                    app:item_rightWight="0" />
+
+                <com.mylibrary.api.widget.MySpinnerView
+                    android:id="@+id/productList_Brand"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    app:Spinner_Icon="@drawable/down_up"
+                    app:Spinner_checkIcon="@drawable/down_blue"
+                    app:Spinner_checkTextColor="@color/blue"
+                    app:Spinner_text="产品品牌" />
+
+                <com.mylibrary.api.widget.MySpinnerView
+                    android:id="@+id/productList_State"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:visibility="@{type==0||type==3?View.VISIBLE:View.GONE}"
+                    app:Spinner_checkIcon="@drawable/down_blue"
+                    app:Spinner_checkTextColor="@color/blue"
+                    app:Spinner_text="@string/product_state" />
+
+                <com.mylibrary.api.widget.MySpinnerView
+                    android:id="@+id/productList_InventoryState"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:visibility="@{type==0||type==3?View.VISIBLE:View.GONE}"
+                    app:Spinner_checkIcon="@drawable/down_blue"
+                    app:Spinner_checkTextColor="@color/blue"
+                    app:Spinner_text="@string/product_InventoryState" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/productList_Refresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/productList_Rec"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/padding1" />
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+        <com.mylibrary.api.widget.VariedLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingStart="14dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp"
+            app:attr_background="@color/blue"
+            app:attr_topLeftRadius="@dimen/radius3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="剩余库存总成本"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_Size3" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text='@{data.amount==null?"0":String.format(@string/rmb,data.amount)}'
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_Size3" />
+
+        </com.mylibrary.api.widget.VariedLinearLayout>
+    </LinearLayout>
+</layout>

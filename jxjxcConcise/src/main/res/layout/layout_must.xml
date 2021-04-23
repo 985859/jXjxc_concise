@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.mylibrary.api.utils.SpannableUtil" />
+
+        <import type="android.graphics.Color" />
+    </data>
+
+    <TextView
+        style="@style/MarginStyle3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text='@{SpannableUtil.setTextColor(@string/must_text,2,3,Color.parseColor("#fe2552"))}'
+        android:textColor="@color/blue"
+        android:textSize="@dimen/text_Size3" />
+</layout>
+

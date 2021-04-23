@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="index"
+            type="String" />
+
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.DebtListBean" />
+
+        <import type="android.view.View" />
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:gravity="bottom"
+                app:item_leftTextColor="@color/contentColor"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/itmDebtData_More"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setItemLeftText="@{String.format(@string/index,index)}" />
+
+
+            <ImageView
+                android:id="@+id/itmDebtData_More"
+                android:layout_width="30dp"
+                android:layout_height="22dp"
+                android:gravity="center"
+                android:paddingEnd="8dp"
+                android:src="@drawable/more"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.mylibrary.api.widget.VariedConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/layout_background_8"
+            android:padding="10dp">
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmDebtData_No"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="@{StringUtil.isNotEmpty(data.no)?View.VISIBLE:View.GONE}"
+                app:item_leftText="@string/product_Name"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setItemLeftText="@{type==2?@string/stock_in_order_no:@string/stock_out_order_no}"
+                app:setRightText="@{data.no}" />
+
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmDebtData_Price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                app:item_leftText="@string/debt_Amount3"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="9dp"
+                app:layout_constraintEnd_toStartOf="@+id/itmDebtData_Amount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmDebtData_No"
+                app:setItemLeftText="@{type==2?@string/on_creditAmount3:@string/debt_Amount3}"
+                app:setRightText="@{Util.setPriceRed(data.debtNow)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmDebtData_Amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:item_leftText="@string/debt_original"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="9dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itmDebtData_Price"
+                app:layout_constraintTop_toTopOf="@+id/itmDebtData_Price"
+                app:setItemLeftText="@{type==2?@string/on_credit_original:@string/debt_original}"
+                app:setRightText="@{Util.setPriceRed(data.money)}" />
+
+
+        </com.mylibrary.api.widget.VariedConstraintLayout>
+
+    </LinearLayout>
+</layout>

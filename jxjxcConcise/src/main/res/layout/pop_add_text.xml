@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/popAddText_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/layout_white_top_20"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight">
+
+            <TextView
+                android:id="@+id/popText_Title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="添加"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/text_Size3" />
+
+            <ImageView
+                android:id="@+id/popText_Close"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:onClick="@{()->onClick.accept(0)}"
+                android:padding="13dp"
+                android:src="@drawable/close_g" />
+
+        </FrameLayout>
+
+        <com.mylibrary.api.widget.ClearEditText
+            android:id="@+id/popText_Name"
+            style="@style/editStyle"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edittext_bg_20"
+            android:hint="请输入添加内容"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/title_Size1"
+            app:ced_Size_clear="16dp"
+            app:ced_clear_Icon="@drawable/clear"
+            app:ced_interval="8dp" />
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/popText_Comfrim"
+            style="@style/buttonStyle"
+            android:onClick="@{()->onClick.accept(1)}"
+            android:text="@string/computer_post"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+</layout>

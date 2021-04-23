@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="comName"
+            type="String" />
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+
+        <variable
+            name="showRec"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.AfterServiceBody" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.AfterServiceAddActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/afterServiceAdd_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_Title="@string/after_service_add" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
+
+                <include layout="@layout/layout_must" />
+
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <LinearLayout
+                        style="@style/ViewStyle"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/after_service_type"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/text_Size3" />
+
+                        <com.mylibrary.api.widget.VariedTextView
+                            android:layout_width="120dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="6dp"
+                            android:gravity="center"
+                            android:paddingStart="@dimen/padding3"
+                            android:paddingEnd="@dimen/padding3"
+                            android:paddingBottom="2dp"
+                            android:text="@string/maintain"
+                            android:textColor="@color/white"
+                            app:attr_background="@color/red"
+                            app:attr_cornersRaius="@dimen/radius3" />
+                    </LinearLayout>
+
+                    <com.yiande.jxjxc.view.ItemTextView
+                        style="@style/ViewStyle"
+                        android:text="@{comName}"
+                        app:title="@string/client" />
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout style="@style/ViewStyle">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{Util.setMustTilte(@string/after_service_product)}"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/text_Size3"
+                            app:layout_constraintBottom_toBottomOf="@+id/afterServiceAdd_AddProduct"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/afterServiceAdd_AddProduct" />
+
+                        <com.mylibrary.api.widget.VariedTextView
+                            android:id="@+id/afterServiceAdd_AddProduct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->onClick.accept(0)}"
+                            android:paddingStart="12dp"
+                            android:paddingTop="2dp"
+                            android:paddingEnd="12dp"
+                            android:paddingBottom="2dp"
+                            android:text="+ 添加售后产品"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_Size2"
+                            app:attr_background="@color/blue"
+                            app:attr_cornersRaius="@dimen/radius2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/afterServiceAdd_ProductRec"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="6dp"
+                            android:visibility="@{showRec?View.VISIBLE:View.GONE}"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/afterServiceAdd_AddProduct" />
+
+                        <TextView
+                            android:id="@+id/afterServiceAdd_ProductAdd"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_marginTop="@dimen/margin3"
+                            android:background="@drawable/layout_background_8"
+                            android:gravity="center"
+                            android:onClick="@{()->onClick.accept(0)}"
+                            android:text="添加售后产品"
+                            android:textColor="@color/contentColor"
+                            android:textSize="@dimen/text_Size2"
+                            android:visibility="@{showRec?View.GONE:View.VISIBLE}"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/afterServiceAdd_AddProduct" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <com.yiande.jxjxc.view.TypeView
+                        android:id="@+id/afterServiceAdd_Maintain"
+                        style="@style/ViewStyle"
+                        android:hint="@string/maintain_employee_hit"
+                        android:onClick="@{()->onClick.accept(1)}"
+                        app:must="1"
+                        app:title="@string/maintain_employee" />
+
+                    <com.yiande.jxjxc.view.TypeView
+                        android:id="@+id/afterServiceAdd_MaintainBegin"
+                        style="@style/ViewStyle"
+                        android:hint="@string/maintain_begin_hit"
+                        android:onClick="@{()->onClick.accept(2)}"
+                        app:title="@string/maintain_begin" />
+
+                    <com.yiande.jxjxc.view.TypeView
+                        android:id="@+id/afterServiceAdd_MaintainEnd"
+                        style="@style/ViewStyle"
+                        android:hint="@string/maintain_end_hit"
+                        android:onClick="@{()->onClick.accept(3)}"
+                        app:title="@string/maintain_end" />
+
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/afterServiceAdd_OtherAmount"
+                        style="@style/ViewStyle"
+                        android:hint="@string/after_other_amount_hint"
+                        app:setEditText="@={data.other}"
+                        app:title="@string/other_amount" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/afterServiceAdd_ChargeFees"
+                        style="@style/ViewStyle"
+                        android:hint="@string/after_charge_fees_hint"
+                        app:setEditText="@={data.charge}"
+                        app:title="@string/charge_fees" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin3"
+                    android:layout_marginTop="@dimen/margin3"
+                    android:layout_marginEnd="@dimen/margin3"
+                    android:orientation="horizontal">
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/afterServiceAdd_MaintainMoney"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_white_br_20"
+                        android:padding="@dimen/padding3"
+                        app:priceView_Edit="false"
+                        app:priceView_IconSize="16dp"
+                        app:priceView_ShowLine="true"
+                        app:setEditText='@{"0"}'
+                        app:title="@string/maintain_product_money" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/afterServiceAdd_MaintainAmount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_white_bl_20"
+                        android:padding="@dimen/padding3"
+                        app:priceView_Edit="false"
+                        app:priceView_IconSize="16dp"
+                        app:priceView_ShowLine="true"
+                        app:setEditText='@{"0"}'
+                        app:title="@string/maintain_amount2" />
+                </LinearLayout>
+
+                <com.yiande.jxjxc.view.PriceView
+                    android:id="@+id/afterServiceAdd_MaintainProfit"
+                    style="@style/LayoutStyle"
+                    app:priceView_Edit="false"
+                    app:priceView_IconSize="16dp"
+                    app:priceView_ShowLine="true"
+                    app:priceView_AddFilter="false"
+                    app:setEditText='@{"0"}'
+                    app:title="@string/maintain_profit" />
+
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <include
+                        android:id="@+id/afterServiceAdd_Pic"
+                        layout="@layout/layout_add_pic"
+                        app:maxPic="@{5}"
+                        app:must="1"
+                        app:title="@{@string/after_service_pic}" />
+
+                    <com.yiande.jxjxc.view.TypeView
+                        android:id="@+id/afterServiceAdd_Detail"
+                        style="@style/ViewStyle"
+                        android:hint="@string/after_service_detail_hint"
+                        android:onClick="@{()->onClick.accept(4)}"
+                        app:title="@string/after_service_detail" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/afterServiceAdd_BT"
+                    style="@style/buttonStyle"
+                    android:onClick="@{()->onClick.accept(5)}" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

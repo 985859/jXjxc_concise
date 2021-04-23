@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="onClicek"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+    </data>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/background"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <!--红#d81e06
+            黄#f4ea2a
+            绿#1afa29
+            蓝#1296db
+            深蓝#13227a
+            黑#000000
+            深灰#333333
+            灰#515151 -->
+            <ImageView
+                android:id="@+id/popColor_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="#d81e06"
+                android:onClick="@{()->onClicek.accept(1)}" />
+
+            <ImageView
+                android:id="@+id/popColor_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="#f4ea2a"
+                android:onClick="@{()->onClicek.accept(2)}" />
+
+            <ImageView
+                android:id="@+id/popColor_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="#1afa29"
+                android:onClick="@{()->onClicek.accept(3)}" />
+
+            <ImageView
+                android:id="@+id/popColor_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="#1296db"
+                android:onClick="@{()->onClicek.accept(4)}" />
+
+            <ImageView
+                android:id="@+id/popColor_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="#13227a"
+                android:onClick="@{()->onClicek.accept(5)}" />
+
+            <ImageView
+                android:id="@+id/popColor_6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="#000000"
+                android:onClick="@{()->onClicek.accept(6)}" />
+
+            <ImageView
+                android:id="@+id/popColor_7"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="#333333"
+                android:onClick="@{()->onClicek.accept(7)}" />
+
+            <ImageView
+                android:id="@+id/popColor_8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="#515151"
+                android:onClick="@{()->onClicek.accept(8)}" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+</layout>

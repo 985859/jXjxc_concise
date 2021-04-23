@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.UserAddressBean" />
+
+        <variable
+            name="type"
+            type="Integer" />
+    </data>
+
+
+    <LinearLayout
+        android:id="@+id/popAddText_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_white_top_20"
+            android:orientation="vertical">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/topHight">
+
+                <TextView
+                    android:id="@+id/popAddress_Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="添加"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/text_Size3" />
+
+                <ImageView
+                    android:id="@+id/popAddress_Close"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:onClick="@{()->onClick.accept(0)}"
+                    android:padding="13dp"
+                    android:src="@drawable/close_g" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin3"
+                android:layout_marginEnd="@dimen/margin3"
+                android:orientation="horizontal">
+
+                <com.mylibrary.api.widget.VariedTextView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{()->onClick.accept(2)}"
+                    android:text="@string/address_com"
+                    android:textColor="@{type==0?@color/white:@color/textColor}"
+                    android:textSize="@dimen/text_Size3"
+                    app:attr_cornersRaius="@dimen/radius3"
+                    app:setBackgroundColor="@{type==0?@color/blue:@color/gray}" />
+
+                <com.mylibrary.api.widget.VariedTextView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{()->onClick.accept(3)}"
+                    android:text="@string/address_send"
+                    android:textColor="@{type==1?@color/white:@color/textColor}"
+                    android:textSize="@dimen/text_Size3"
+                    app:attr_cornersRaius="@dimen/radius3"
+                    app:setBackgroundColor="@{type==1?@color/blue:@color/gray}" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/popAddress_Name"
+                style="@style/editStyle"
+                android:layout_height="wrap_content"
+                android:hint="请输入地址简称"
+                android:singleLine="true"
+                android:text="@={data.userAddress_Name}"
+ />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/popAddress_Text"
+                style="@style/editStyle2"
+                android:layout_height="120dp"
+                android:layout_marginBottom="10dp"
+                android:hint="请输入添加内容"
+                android:text="@={data.userAddress_Address}" />
+
+            <Button
+                android:id="@+id/popAddress_Confirm"
+                style="@style/buttonStyle"
+                android:onClick="@{()->onClick.accept(1)}"
+                android:text="@string/computer_post"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

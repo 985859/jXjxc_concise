@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="showEmpty"
+            type="Boolean" />
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:alpha="0.3"
+            android:background="@color/black" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_white_top_20"
+            android:orientation="vertical">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:id="@+id/projectselect_Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@{title}"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/text_Size4" />
+
+                <ImageView
+                    android:id="@+id/projectselect_Close"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:onClick="@{()->onClick.accept(0)}"
+                    android:padding="12dp"
+                    android:src="@drawable/close_g" />
+
+            </FrameLayout>
+
+
+            <TextView
+                android:id="@+id/projectselect_Empty"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:gravity="center"
+                android:text="暂无内容"
+                android:visibility="@{showEmpty?View.VISIBLE:View.GONE}" />
+
+            <com.contrarywind.view.WheelView
+                android:id="@+id/projectselect_Wheel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:visibility="@{showEmpty?View.GONE:View.VISIBLE}" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="center">
+
+                <com.mylibrary.api.widget.VariedTextView
+                    android:id="@+id/projectselect_Reset"
+                    android:layout_width="150dp"
+                    android:layout_height="@dimen/buttonHeight"
+                    android:layout_marginEnd="6dp"
+                    android:gravity="center"
+                    android:onClick="@{()->onClick.accept(1)}"
+                    android:text="@string/reset"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_Size4"
+                    app:attr_background="@color/yellow"
+                    app:attr_bottomLeftRadius="@dimen/radius3"
+                    app:attr_bottomRightRadius="@dimen/radius"
+                    app:attr_topLeftRadius="@dimen/radius3"
+                    app:attr_topRightRadius="@dimen/radius" />
+
+                <com.mylibrary.api.widget.VariedTextView
+                    android:id="@+id/projectselect_Comfrim"
+                    android:layout_width="150dp"
+                    android:layout_height="@dimen/buttonHeight"
+                    android:layout_marginStart="6dp"
+                    android:gravity="center"
+                    android:onClick="@{()->onClick.accept(2)}"
+                    android:text="@string/computer"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_Size4"
+                    app:attr_background="@color/blue"
+                    app:attr_bottomLeftRadius="@dimen/radius"
+                    app:attr_bottomRightRadius="@dimen/radius3"
+                    app:attr_topLeftRadius="@dimen/radius"
+                    app:attr_topRightRadius="@dimen/radius3" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

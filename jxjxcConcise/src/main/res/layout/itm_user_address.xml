@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="showAdd"
+            type="Boolean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itmUserAddress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding2"
+        android:layout_marginBottom="@dimen/padding2">
+
+
+        <TextView
+            android:id="@+id/itmUserAddress_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/text_Size3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/itmUserAddress_SubTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/text_Size2"
+            app:layout_constraintBottom_toBottomOf="@+id/itmUserAddress_Title"
+            app:layout_constraintEnd_toStartOf="@+id/itmUserAddress_Add"
+            app:layout_constraintStart_toEndOf="@+id/itmUserAddress_Title" />
+
+        <TextView
+            android:id="@+id/itmUserAddress_Add"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_Size"
+            android:visibility="@{showAdd?View.VISIBLE:View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.mylibrary.api.widget.VariedTextView
+            android:id="@+id/itmUserAddress_Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="6dp"
+            android:paddingTop="8dp"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_Size3"
+            app:attr_drawableRightHeight="14dp"
+            app:attr_drawableRightWidth="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmUserAddress_Title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

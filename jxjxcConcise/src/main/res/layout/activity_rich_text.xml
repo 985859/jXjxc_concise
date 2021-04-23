@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onClicek"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isEdit"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/richDetail_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_Title="编辑文本" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin3"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="@dimen/margin3"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/layout_white_20"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <jp.wasabeef.richeditor.RichEditor
+                android:id="@+id/richDetail_editor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="请输入详情内容" />
+        </LinearLayout>
+
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:scrollbars="none"
+            android:visibility="@{isEdit?View.VISIBLE:View.GONE}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp">
+
+                <ImageView
+                    android:id="@+id/richDetail_Pic"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/picup_g"
+                    android:onClick="@{()->onClicek.accept(1)}"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/richDetail_Bold"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/blud_g"
+                    android:onClick="@{()->onClicek.accept(2)}" />
+
+                <ImageView
+                    android:id="@+id/richDetail_color"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/color_g"
+                    android:onClick="@{()->onClicek.accept(3)}" />
+
+                <ImageView
+                    android:id="@+id/richDetail_Size"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/size_g"
+                    android:onClick="@{()->onClicek.accept(4)}" />
+
+                <ImageView
+                    android:id="@+id/richDetail_List1"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/list_g"
+                    android:onClick="@{()->onClicek.accept(5)}" />
+
+                <ImageView
+                    android:id="@+id/richDetail_List2"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/list_g2"
+                    android:onClick="@{()->onClicek.accept(6)}" />
+
+                <ImageView
+                    android:id="@+id/richDetail_Left"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/left_g"
+                    android:onClick="@{()->onClicek.accept(7)}" />
+
+                <ImageView
+                    android:id="@+id/richDetail_Center"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/center_g"
+                    android:onClick="@{()->onClicek.accept(8)}" />
+
+                <ImageView
+                    android:id="@+id/richDetail_Right"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/right_g"
+                    android:onClick="@{()->onClicek.accept(9)}" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </LinearLayout>
+</layout>

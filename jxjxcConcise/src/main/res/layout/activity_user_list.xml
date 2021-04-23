@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onClik"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+
+        <variable
+            name="userType"
+            type="Integer" />
+
+        <variable
+            name="user_IsOK"
+            type="Integer" />
+
+        <variable
+            name="user_Default"
+            type="Integer" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.mylibrary.api.widget.VariedLinearLayout
+            android:id="@+id/userList_TopLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:attr_background="@color/white"
+            app:attr_bottomLeftRadius="@dimen/radius2">
+
+            <com.mylibrary.api.widget.TopSearchView
+                android:id="@+id/userList_Top"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/topHight"
+                android:background="@drawable/top_background"
+                app:topSearchBackground="@drawable/search_background"
+                app:topSearchHins="输入姓名或公司名称搜索"
+                app:topSearchHinsColor="@color/gray3"
+                app:topSearchRightText="@string/add"
+                app:topSearchRightTextColor="@color/white" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{()->onClik.accept(0)}"
+                    android:text="默认"
+                    android:textColor="@{user_Default==0?@color/blue:@color/textColor}"
+                    android:textSize="@dimen/text_Size3" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{()->onClik.accept(1)}"
+                    android:text="启用"
+                    android:textColor="@{user_IsOK==1?@color/blue:@color/textColor}"
+                    android:textSize="@dimen/text_Size3" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{()->onClik.accept(2)}"
+                    android:text="禁用"
+                    android:textColor="@{user_IsOK==0?@color/blue:@color/textColor}"
+                    android:textSize="@dimen/text_Size3" />
+
+                <com.mylibrary.api.widget.MySpinnerView
+                    android:id="@+id/userList_Class"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:minWidth="100dp"
+                    app:Spinner_Icon="@drawable/down_gary"
+                    app:Spinner_checkIcon="@drawable/down_blue"
+                    app:Spinner_checkTextColor="@color/blue"
+                    app:Spinner_text="分类"
+                    app:Spinner_textColor="@color/textColor"
+                    app:Spinner_textSize="@dimen/text_Size3" />
+
+            </LinearLayout>
+        </com.mylibrary.api.widget.VariedLinearLayout>
+
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/userList_Refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/userList_Rec"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp" />
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+    </LinearLayout>
+</layout>

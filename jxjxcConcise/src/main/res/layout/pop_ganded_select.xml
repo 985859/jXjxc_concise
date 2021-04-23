@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_white_top_20"
+        android:orientation="vertical">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+
+            <TextView
+                android:id="@+id/popGanded_Title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="选择类别"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/text_Size3" />
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:padding="12dp"
+                android:onClick="@{()->onClick.accept(0)}"
+                android:src="@drawable/close_g" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#d7d7d7" />
+
+        <com.yiande.jxjxc.view.LevelView
+            android:id="@+id/popGanded_LevelView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center">
+
+            <com.mylibrary.api.widget.VariedTextView
+                android:id="@+id/projectselect_Reset"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/buttonHeight"
+                android:layout_marginEnd="6dp"
+                android:gravity="center"
+                android:onClick="@{()->onClick.accept(1)}"
+                android:text="@string/reset"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_Size4"
+                app:attr_background="@color/yellow"
+                app:attr_bottomLeftRadius="@dimen/radius3"
+                app:attr_bottomRightRadius="@dimen/radius"
+                app:attr_topLeftRadius="@dimen/radius3"
+                app:attr_topRightRadius="@dimen/radius" />
+
+            <com.mylibrary.api.widget.VariedTextView
+                android:id="@+id/projectselect_Comfrim"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/buttonHeight"
+                android:layout_marginStart="6dp"
+                android:gravity="center"
+                android:onClick="@{()->onClick.accept(2)}"
+                android:text="@string/computer"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_Size4"
+                app:attr_background="@color/blue"
+                app:attr_bottomLeftRadius="@dimen/radius"
+                app:attr_bottomRightRadius="@dimen/radius3"
+                app:attr_topLeftRadius="@dimen/radius"
+                app:attr_topRightRadius="@dimen/radius3" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,9 @@
+<resources>
+
+
+    <!--启动 白屏的处理-->
+    <style name="AppThemeTwo" parent="@android:style/Theme.Light.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@drawable/start_2129</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+</resources>

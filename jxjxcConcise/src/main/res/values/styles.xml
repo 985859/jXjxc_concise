@@ -1,0 +1,130 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+     <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <!--启动 白屏的处理-->
+    <style name="AppThemeTwo" parent="@android:style/Theme.Light.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@drawable/start_1920</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+    <style name="NoBackGroundDialog" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowBackground">@color/empty</item>
+    </style>
+
+
+    <style name="LayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin3</item>
+        <item name="android:layout_marginStart">@dimen/margin3</item>
+        <item name="android:layout_marginEnd">@dimen/margin3</item>
+        <item name="android:background">@drawable/layout_white_20</item>
+        <item name="android:padding">@dimen/margin2</item>
+    </style>
+
+
+    <style name="ViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/padding2</item>
+        <item name="android:layout_marginBottom">@dimen/padding2</item>
+    </style>
+
+
+    <style name="MarginStyle1">
+        <item name="android:layout_marginTop">@dimen/margin1</item>
+        <item name="android:layout_marginStart">@dimen/margin1</item>
+        <item name="android:layout_marginEnd">@dimen/margin1</item>
+    </style>
+
+    <style name="MarginStyle2">
+        <item name="android:layout_marginTop">@dimen/margin2</item>
+        <item name="android:layout_marginStart">@dimen/margin2</item>
+        <item name="android:layout_marginEnd">@dimen/margin2</item>
+    </style>
+
+    <style name="MarginStyle3">
+        <item name="android:layout_marginTop">@dimen/margin3</item>
+        <item name="android:layout_marginStart">@dimen/margin3</item>
+        <item name="android:layout_marginEnd">@dimen/margin3</item>
+    </style>
+
+
+    <style name="editStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:gravity">left</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:background">@drawable/edittext_bg_20</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">@dimen/text_Size2</item>
+        <item name="android:layout_marginTop">@dimen/margin3</item>
+        <item name="android:layout_marginStart">@dimen/margin3</item>
+        <item name="android:layout_marginEnd">@dimen/margin3</item>
+    </style>
+    <style name="editStyle2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:gravity">left</item>
+        <item name="android:background">@drawable/edittext_bg_20</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">@dimen/text_Size2</item>
+        <item name="android:layout_marginTop">@dimen/margin3</item>
+        <item name="android:layout_marginStart">@dimen/margin3</item>
+        <item name="android:layout_marginEnd">@dimen/margin3</item>
+    </style>
+    <style name="textStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">@dimen/text_Size3</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+    </style>
+
+
+    <style name="textStyle2">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">@dimen/text_Size3</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+    </style>
+
+
+    <style name="buttonStyle">
+        <item name="android:layout_width">@dimen/buttonWidth</item>
+        <item name="android:layout_height">@dimen/buttonHeight</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">32dp</item>
+        <item name="android:text">@string/computer_post</item>
+        <item name="android:textSize">@dimen/text_Size3</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+</resources>

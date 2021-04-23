@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <!--1欠款 2赊账 -->
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.DebtRowsBean" />
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:background="@drawable/layout_white_20"
+        android:orientation="vertical"
+        android:padding="@dimen/padding3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                app:item_leftTextColor="@color/gray3"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size3"
+                app:setItemLeftText="@{type==2?@string/supplier:@string/client}"
+                app:setRightText="@{data.ComName}" />
+
+            <com.mylibrary.api.widget.VariedTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="2dp"
+                android:text="@{data.state==0?type==2?@string/on_credit:@string/debt:@string/pay_off}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_Size2"
+                app:attr_cornersRaius="@dimen/radius3"
+                app:setBackgroundColor="@{data.state==0?@color/yellow:@color/green}" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                app:item_leftTextColor="@color/gray3"
+                app:item_leftTextMinWidth="50dp"
+                app:item_rightTextColor="@color/blue"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size3"
+                app:setItemLeftText="@{type==2?@string/on_creditAmount:@string/debt_Amount}"
+                app:setRightText="@{Util.setPrice(data.debtNow)}" />
+
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_weight="1"
+                app:item_leftTextColor="@color/gray3"
+                app:item_leftTextMinWidth="50dp"
+                app:item_rightTextColor="@color/blue"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size3"
+                app:setItemLeftText="@{type==2?@string/on_credit_all3:@string/debt_all3}"
+                app:setRightText="@{Util.setPrice(data.debtAll)}"/>
+        </LinearLayout>
+
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:item_leftText="@string/linkMan_Tel"
+            app:item_leftTextColor="@color/gray3"
+            app:item_leftTextMinWidth="50dp"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size3"
+            app:setRightText="@{data.mob}" />
+    </LinearLayout>
+</layout>

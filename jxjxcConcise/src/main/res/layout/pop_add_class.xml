@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+
+        <variable
+            name="isAdd"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_white_top_20"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:id="@+id/popAddClass_Title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/text_Size3" />
+
+            <ImageView
+                android:id="@+id/popAddClass_Close"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:onClick="@{()->onClick.accept(3)}"
+                android:padding="12dp"
+                android:src="@drawable/close_g" />
+
+        </FrameLayout>
+
+        <EditText
+            android:id="@+id/popAddClass_Name"
+
+            style="@style/editStyle"
+            android:background="@drawable/edittext_bg_20"
+            android:hint="请输入商品分类名称"
+            android:maxLines="1"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/title_Size1" />
+
+
+        <LinearLayout
+            android:id="@+id/popAddClass_Layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin3"
+                android:gravity="center"
+                android:text="@{isAdd?@string/add_to:@string/amend_to}"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/title_Size2" />
+
+
+            <com.contrarywind.view.WheelView
+                android:id="@+id/popAddClass_wheelview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:wheelview_textSize="14sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:padding="8dp">
+
+                <com.mylibrary.api.widget.VariedTextView
+                    android:id="@+id/popAddClass_Type1"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="@dimen/margin3"
+                    android:layout_marginEnd="@dimen/margin1"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/button_check_background"
+                    android:gravity="center"
+                    android:onClick="@{()->onClick.accept(1)}"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="  之前 " />
+
+                <com.mylibrary.api.widget.VariedTextView
+                    android:id="@+id/popAddClass_Type2"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_check_background"
+                    android:gravity="center"
+                    android:onClick="@{()->onClick.accept(0)}"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="  保持不变 "
+                    android:visibility="gone" />
+
+                <com.mylibrary.api.widget.VariedTextView
+                    android:id="@+id/popAddClass_Type3"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="@dimen/margin1"
+                    android:layout_marginEnd="@dimen/margin3"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_check_background"
+                    android:gravity="center"
+                    android:onClick="@{()->onClick.accept(2)}"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="  之后 " />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/popAddClass_Comfrim"
+            style="@style/buttonStyle"
+            android:onClick="@{()->onClick.accept(4)}"
+
+            />
+
+    </LinearLayout>
+</layout>

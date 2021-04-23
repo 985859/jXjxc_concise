@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/levelTab"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/blue2"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="1dp"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/blue2"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
+        app:tabTextColor="@color/textColor" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.mylibrary.api.widget.VariedTextView
+            android:id="@+id/level_Up"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="上一级"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_Size2"
+            app:attr_background="@color/yellow"
+            app:attr_cornersRaius="20dp" />
+
+        <me.simple.picker.PickerRecyclerView
+            android:id="@+id/levelRec"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:dividerVisible="false"
+            app:dividerMargin="10dp" />
+
+        <com.mylibrary.api.widget.VariedTextView
+            android:id="@+id/level_Down"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="下一级"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_Size2"
+            app:attr_background="@color/yellow"
+            app:attr_cornersRaius="20dp" />
+    </LinearLayout>
+
+
+</LinearLayout>

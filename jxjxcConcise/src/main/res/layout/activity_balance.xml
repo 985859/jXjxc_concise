@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.BalanceBean" />
+
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.DebtActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/balance_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@color/white"
+            app:attr_LeftIcon="@drawable/return_g"
+            app:attr_TitleColor="@color/textColor"
+         />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+
+                    <include
+                        layout="@layout/layout_amount"
+                        app:amount="@{data.Balance}"
+                        app:endColor="@{@color/blue2}"
+                        app:startColor="@{@color/blue}"
+                        app:title="@{@string/client_yu_e}" />
+
+
+                    <LinearLayout
+                        style="@style/MarginStyle3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/margin3">
+
+                        <com.mylibrary.api.widget.VariedTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="@dimen/buttonHeight"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginEnd="8dp"
+                            android:gravity="center"
+                            android:onClick="@{()->onClick.accept(0)}"
+                            android:text="@string/client_recharge"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_Size3"
+                            app:attr_background="@color/green"
+                            app:attr_bottomLeftRadius="@dimen/radius3"
+                            app:attr_bottomRightRadius="@dimen/radius"
+                            app:attr_topLeftRadius="@dimen/radius3"
+                            app:attr_topRightRadius="@dimen/radius" />
+
+                        <com.mylibrary.api.widget.VariedTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="@dimen/buttonHeight"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center"
+                            android:onClick="@{()->onClick.accept(1)}"
+                            android:text="@string/client_recharge2"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_Size3"
+                            app:attr_background="@color/yellow"
+                            app:attr_bottomLeftRadius="@dimen/radius"
+                            app:attr_bottomRightRadius="@dimen/radius3"
+                            app:attr_topLeftRadius="@dimen/radius"
+                            app:attr_topRightRadius="@dimen/radius3" />
+                    </LinearLayout>
+
+
+                    <com.mylibrary.api.widget.ItemView
+                        style="@style/MarginStyle3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin3"
+                        android:onClick="@{()->onClick.accept(2)}"
+                        app:gravity="center"
+                        app:item_leftText="最近记录"
+                        app:item_leftTextColor="@color/textColor"
+                        app:item_leftTextSize="@dimen/text_Size3"
+                        app:item_leftWight="0"
+                        app:item_rightText="查看更多明细 >"
+                        app:item_rightTextColor="@color/gray4"
+                        app:item_rightTextGravity="end"
+                        app:item_rightTextSize="@dimen/text_Size2"
+                        app:item_rightWight="1" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/balance_Rec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.UserBean" />
+
+        <variable
+            name="showYuE"
+            type="Boolean" />
+
+        <variable
+            name="showDebt"
+            type="Boolean" />
+
+        <variable
+            name="showLevel"
+            type="Boolean" />
+
+        <variable
+            name="context"
+            type="android.content.Context" />
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+
+        <import type="android.view.View" />
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/layout_white_20"
+        android:paddingStart="10dp"
+        android:paddingBottom="10dp">
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmUser_ComName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:minHeight="20dp"
+            app:gravity="center_vertical"
+            app:item_leftText="@string/client_name"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="58dp"
+            app:item_leftTextSize="@dimen/text_Size2"
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextSize="14sp"
+            app:item_rightWight="1"
+            app:layout_constraintEnd_toStartOf="@+id/itmUser_More"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setItemLeftText="@{data.user_Type==1?@string/client_name:@string/supplier_name}" />
+
+
+        <ImageView
+            android:id="@+id/itmUser_More"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:src="@drawable/more"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmUser_LinkMan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:visibility="@{StringUtil.isNotEmpty(data.user_Name)?View.VISIBLE:View.GONE}"
+            app:item_leftText="@string/LinkMan"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="58dp"
+            app:item_leftTextSize="@dimen/text_Size2"
+            app:item_rightTextSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/itmUser_More"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmUser_ComName"
+            app:layout_goneMarginTop="10dp"
+            app:setRightText='@{data.user_Name}' />
+
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmUser_Mob"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:item_leftText="@string/linkMan_Tel"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="58dp"
+            app:item_leftTextSize="@dimen/text_Size2"
+            app:item_rightTextSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/itmUser_Call"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/itmUser_LinkMan"
+            app:setRightText='@{data.user_Mob}' />
+
+        <ImageView
+            android:id="@+id/itmUser_Call"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:src="@drawable/call_green"
+            app:layout_constraintBottom_toBottomOf="@+id/itmUser_Mob"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

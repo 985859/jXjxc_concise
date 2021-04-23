@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="index"
+            type="String" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.InvoiceRowsBean" />
+
+        <import type="android.view.View" />
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                app:gravity="bottom"
+                app:item_leftTextColor="@color/contentColor"
+                app:item_rightTextColor="@color/red"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/itmInvoice_More"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setItemLeftText="@{String.format(@string/index,index)}"
+                app:setRightText='@{data.isDel==0?"":@string/cancellation}' />
+
+
+            <com.mylibrary.api.widget.VariedTextView
+                android:id="@+id/itmInvoice_More"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/delete_w"
+                android:drawablePadding="4dp"
+                android:paddingStart="12dp"
+                android:paddingTop="3dp"
+                android:paddingEnd="12dp"
+                android:visibility="@{data.isDel==0?View.VISIBLE:View.GONE}"
+                android:paddingBottom="3dp"
+                android:text="@string/invoice_del"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_Size2"
+                app:attr_background="@color/red"
+                app:attr_cornersRaius="@dimen/radius3"
+                app:attr_drawableLeftHeight="12dp"
+                app:attr_drawableLeftWidth="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.mylibrary.api.widget.VariedConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="10dp"
+            app:attr_cornersRaius="8dp"
+            app:setBackgroundColor="@{data.isDel==0?@color/background:@color/red2}">
+
+
+            <com.mylibrary.api.widget.picassoImage.PicassoImageView
+                android:id="@+id/itmInvoice_Pic"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:visibility="@{StringUtil.isNotEmpty(data.pic)?View.VISIBLE:View.INVISIBLE}"
+                app:attr_cornersRaius="@dimen/radius"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setPicUrl="@{data.pic}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmInvoice_Money"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                app:item_leftText="@string/invoice_amount"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="50dp"
+                app:item_rightTextPadding="6dp"
+                app:layout_constraintBottom_toTopOf="@+id/itmInvoice_Name"
+                app:layout_constraintEnd_toStartOf="@+id/itmInvoice_Pic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setRightText="@{Util.setPrice(data.money)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmInvoice_Name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                app:item_leftText="@string/invoice_name"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="50dp"
+                app:item_rightTextPadding="6dp"
+                app:layout_constraintBottom_toTopOf="@+id/itmInvoice_Date"
+                app:layout_constraintEnd_toStartOf="@+id/itmInvoice_Pic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmInvoice_Money"
+                app:setRightText="@{data.adminName}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmInvoice_Date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                app:item_leftText="@string/invoice_date"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="50dp"
+                app:item_rightTextPadding="6dp"
+                app:layout_constraintBottom_toBottomOf="@+id/itmInvoice_Pic"
+                app:layout_constraintEnd_toStartOf="@+id/itmInvoice_Pic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmInvoice_Name"
+                app:setRightText="@{data.addDate}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmInvoice_Memo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                android:visibility="@{StringUtil.isNotEmpty(data.memo)?View.VISIBLE:View.GONE}"
+                app:item_leftText="@string/memo"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="50dp"
+                app:item_rightTextPadding="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmInvoice_Pic"
+                app:setRightText="@{data.memo}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmInvoice_delWhy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                android:visibility="@{data.isDel==1?View.VISIBLE:View.GONE}"
+                app:item_leftText="@string/cancellation_why"
+                app:item_leftTextColor="@color/red"
+                app:item_leftTextMinWidth="50dp"
+                app:item_rightTextPadding="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmInvoice_Memo"
+                app:setRightText="@{data.delWhy}" />
+        </com.mylibrary.api.widget.VariedConstraintLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="type"
+            type="Integer" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_white_top_20"
+        android:orientation="vertical"
+        android:paddingBottom="16dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:id="@+id/popProselect_Title"
+                style="@style/textStyle2"
+                android:layout_gravity="center"
+                android:text='@{type==1?"入库产品":"出库产品"}'
+                android:textSize="@dimen/text_Size3" />
+
+
+            <ImageView
+                android:id="@+id/popProselect_Close"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:padding="12dp"
+                android:src="@drawable/close_g" />
+
+        </FrameLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <com.mylibrary.api.widget.ItemView
+                    android:id="@+id/popProselect_ProTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:item_leftIconWidth="56dp"
+                    app:item_leftText="@string/product_Name"
+
+                    app:item_leftTextColor="@color/gray4"
+                    app:item_leftTextMinWidth="56dp"
+                    app:item_rightTextSize="@dimen/text_Size3" />
+
+                <com.mylibrary.api.widget.ItemView
+                    android:id="@+id/popProselect_ProModel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:item_leftText="@string/product_model"
+                    app:item_leftTextColor="@color/gray4"
+                    app:item_leftTextMinWidth="56dp"
+                    app:item_rightTextSize="@dimen/text_Size3" />
+
+                <com.mylibrary.api.widget.ItemView
+                    android:id="@+id/popProselect_BuyPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:item_leftText="进货价"
+                    app:item_leftTextColor="@color/gray4"
+                    app:item_leftTextMinWidth="56dp"
+                    app:item_rightTextColor="@color/blue"
+                    app:item_rightTextSize="@dimen/text_Size3" />
+
+                <com.mylibrary.api.widget.ItemView
+                    android:id="@+id/popProselect_SellPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:gravity="center_vertical"
+                    app:item_leftIcon="@drawable/v0"
+                    app:item_leftIconHeight="14dp"
+                    app:item_leftIconWidth="14dp"
+                    app:item_leftText="销售价"
+                    app:item_leftTextColor="@color/gray4"
+                    app:item_leftTextMinWidth="42dp"
+                    app:item_rightTextColor="@color/blue"
+                    app:item_rightTextSize="@dimen/text_Size3" />
+
+                <com.mylibrary.api.widget.ItemView
+                    android:id="@+id/popProselect_NextPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:visibility="@{type==2?View.VISIBLE:View.GONE}"
+                    app:item_leftText="上次售价"
+                    app:item_leftTextColor="@color/gray4"
+                    app:item_leftTextMinWidth="56dp"
+                    app:item_rightTextColor="@color/blue"
+                    app:item_rightTextSize="@dimen/text_Size3" />
+
+                <com.mylibrary.api.widget.ItemView
+                    android:id="@+id/popProselect_InventeryNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:item_leftText="库存"
+                    app:item_leftTextColor="@color/gray4"
+                    app:item_leftTextMinWidth="56dp"
+                    app:item_rightTextColor="@color/textColor"
+                    app:item_rightTextSize="@dimen/text_Size3" />
+
+
+                <TextView
+                    style="@style/textStyle"
+                    android:text="@{type==1?@string/in_price:@string/out_price}"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/text_Size3" />
+
+                <com.mylibrary.api.widget.ClearEditText
+                    android:id="@+id/popProselect_Price"
+                    style="@style/editStyle"
+                    android:hint="@{type==1?@string/hint_pro_price:@string/hint_pro_price2}"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:id="@+id/popProselect_NumberText"
+                    style="@style/textStyle"
+                    android:text="@string/number"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/text_Size3" />
+
+                <com.mylibrary.api.widget.ClearEditText
+                    android:id="@+id/popProselect_Number"
+                    style="@style/editStyle"
+                    android:hint="@string/hint_pro_number"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/textStyle"
+                    android:text="@string/subtotal" />
+
+                <TextView
+                    android:id="@+id/popProselect_Amount"
+                    style="@style/textStyle"
+                    android:layout_marginStart="18dp"
+                    android:text=""
+                    android:textColor="@color/red" />
+
+                <Button
+                    android:id="@+id/popProselect_BT"
+                    style="@style/buttonStyle"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

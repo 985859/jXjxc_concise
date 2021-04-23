@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="mob"
+            type="String" />
+
+        <variable
+            name="password"
+            type="String" />
+
+        <variable
+            name="showView"
+            type="Boolean" />
+
+        <variable
+            name="userLogin"
+            type="com.yiande.jxjxc.presenter.LoginPresenter.LoginInterface" />
+
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg">
+
+        <ImageView
+            android:id="@+id/login_TopIMG"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="60dp"
+            android:background="@drawable/tit"
+            app:layout_constraintBottom_toTopOf="@+id/login_Scroll"
+            app:layout_constraintDimensionRatio="27:14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_s"
+            app:layout_constraintBottom_toTopOf="@+id/login_Scroll"
+            app:layout_constraintDimensionRatio="45:4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/login_Scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/layout_white_top_20"
+            android:paddingStart="@dimen/padding2"
+            android:paddingTop="@dimen/padding1"
+            android:paddingEnd="@dimen/padding2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_TopIMG">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/layout_white_top_20"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+
+                    <com.mylibrary.api.widget.VariedLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="@dimen/margin3"
+                        android:layout_marginEnd="6dp"
+                        android:orientation="vertical"
+                        android:padding="@dimen/padding3"
+                        app:attr_background="@color/gray"
+                        app:attr_cornersRaius="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/mob"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/text_Size3" />
+
+                        <com.mylibrary.api.widget.ClearEditText
+                            android:id="@+id/login_userName"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="6dp"
+                            android:background="@null"
+                            android:gravity="center_vertical"
+                            android:hint="@string/hint_tel"
+                            android:inputType="phone"
+                            android:maxLength="11"
+                            android:text="@={mob}"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/text_Size3" />
+
+                    </com.mylibrary.api.widget.VariedLinearLayout>
+
+                    <com.mylibrary.api.widget.VariedLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="@dimen/margin2"
+                        android:layout_marginEnd="6dp"
+                        android:orientation="vertical"
+                        android:padding="@dimen/padding3"
+                        app:attr_background="@color/gray"
+                        app:attr_cornersRaius="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/login_password"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/text_Size3" />
+
+                        <com.mylibrary.api.widget.ClearEditText
+                            android:id="@+id/login_Password"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="6dp"
+                            android:background="@null"
+                            android:gravity="center_vertical"
+                            android:hint="@string/hint_password"
+                            android:inputType="textPassword"
+                            android:text="@={password}"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/text_Size3" />
+
+
+                    </com.mylibrary.api.widget.VariedLinearLayout>
+
+
+                    <Button
+                        android:id="@+id/login_BT"
+                        style="@style/buttonStyle"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginBottom="0dp"
+                        android:onClick="@{()->userLogin.loginCode(mob,password)}"
+                        android:text="@string/login"
+                        android:visibility="@{showView?View.VISIBLE:View.GONE}" />
+
+                    <TextView
+                        android:id="@+id/login_SetIP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:paddingStart="10dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="20dp"
+                        android:text="设置IP地址"
+                        android:textColor="@color/blue"
+                        android:visibility="@{showView?View.VISIBLE:View.GONE}" />
+
+                    <TextView
+                        android:id="@+id/loginBttomText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:gravity="center"
+                        android:text="@string/yiande"
+                        android:textColor="#999999"
+                        android:visibility="@{showView?View.VISIBLE:View.GONE}" />
+
+                    <com.mylibrary.api.widget.ItemView
+                        android:id="@+id/loginBttomItem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="12dp"
+                        android:visibility="@{showView?View.VISIBLE:View.GONE}"
+                        app:item_leftText="技术支持"
+                        app:item_leftTextColor="@color/contentColor"
+                        app:item_rightIcon="@drawable/call_green"
+                        app:item_rightIconHeight="16dp"
+                        app:item_rightIconPadding="6dp"
+                        app:item_rightIconWidth="16dp"
+                        app:item_rightText="@string/com_tel"
+                        app:item_rightTextColor="@color/blue"
+                        app:item_rightTextPadding="6dp"
+                        app:item_rightTextSize="14sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

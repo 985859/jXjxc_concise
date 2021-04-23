@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="index"
+            type="String" />
+
+        <variable
+            name="showMore"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.AfterServiceProductBean" />
+
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+
+        <import type="android.view.View" />
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:gravity="bottom"
+                app:item_leftTextColor="@color/contentColor"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/itmAfterServicePro_Ament"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setItemLeftText="@{String.format(@string/index,index)}" />
+
+            <com.mylibrary.api.widget.VariedTextView
+                android:id="@+id/itmAfterServicePro_Ament"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:drawableLeft="@drawable/edit"
+                android:drawablePadding="6dp"
+                android:gravity="center"
+                android:paddingStart="@dimen/padding3"
+                android:paddingTop="2dp"
+                android:paddingEnd="@dimen/padding3"
+                android:paddingBottom="2dp"
+                android:text="编辑"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_Size2"
+                android:visibility="@{showMore?View.VISIBLE:View.GONE}"
+                app:attr_background="@color/blue"
+                app:attr_cornersRaius="@dimen/radius3"
+                app:attr_drawableLeftHeight="12dp"
+                app:attr_drawableLeftWidth="12dp"
+                app:layout_constraintEnd_toStartOf="@+id/itmAfterServicePro_Delete"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.mylibrary.api.widget.VariedTextView
+                android:id="@+id/itmAfterServicePro_Delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/delete_w"
+                android:drawablePadding="6dp"
+                android:gravity="center"
+                android:paddingStart="@dimen/padding3"
+                android:paddingTop="2dp"
+                android:paddingEnd="@dimen/padding3"
+                android:paddingBottom="2dp"
+                android:text="取消"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_Size2"
+                android:visibility="@{showMore?View.VISIBLE:View.GONE}"
+                app:attr_background="@color/yellow"
+                app:attr_cornersRaius="@dimen/radius3"
+                app:attr_drawableLeftHeight="12dp"
+                app:attr_drawableLeftWidth="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.mylibrary.api.widget.VariedConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/layout_background_8"
+            android:padding="10dp">
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmAfterServicePro_Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:item_leftText="@string/product_Name"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setRightText="@{data.title}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmAfterServicePro_Model"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                app:item_leftText="@string/product_Size"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmAfterServicePro_Title"
+                app:setRightText="@{data.model}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmAfterServicePro_Money"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                app:item_leftText="@string/maintain_spending"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="9dp"
+                app:layout_constraintEnd_toStartOf="@+id/itmAfterServicePro_Number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmAfterServicePro_Model"
+                app:setRightText="@{Util.setPriceRed(data.money)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmAfterServicePro_Number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:item_leftText="@string/number"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itmAfterServicePro_Money"
+                app:layout_constraintTop_toTopOf="@+id/itmAfterServicePro_Money"
+                app:setRightText="@{data.quantity}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmAfterServicePro_Supplier"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:visibility="@{StringUtil.isEmpty(data.supplier)?View.GONE:View.VISIBLE}"
+                app:item_leftText="@string/supplier"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="9dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/itmAfterServicePro_Money"
+                app:setRightText="@{data.supplier}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmAfterServicePro_Amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:item_leftText="@string/fault_sketch"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="9dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmAfterServicePro_Supplier"
+                app:setRightText="@{data.text}" />
+
+
+        </com.mylibrary.api.widget.VariedConstraintLayout>
+
+    </LinearLayout>
+</layout>

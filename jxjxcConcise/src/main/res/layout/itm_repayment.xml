@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.RepayRowsBean" />
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+
+        <import type="android.view.View" />
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:background="@drawable/layout_white_20"
+        android:orientation="vertical"
+        android:padding="@dimen/padding3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                app:item_leftText="@string/repayment_amount"
+                app:item_leftTextColor="@color/gray3"
+                app:item_leftTextMinWidth="50dp"
+                app:item_rightTextColor="@color/blue"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size3"
+                app:setRightText="@{Util.setPrice(data.repayMoney)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                app:item_leftText="@string/handlerName"
+                app:item_leftTextColor="@color/gray3"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size3"
+                app:setRightText="@{data.adminName}" />
+
+            <com.mylibrary.api.widget.VariedTextView
+                android:id="@+id/itmDebtDetail_Type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="2dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_Size2"
+                app:attr_cornersRaius="@dimen/radius3" />
+
+        </LinearLayout>
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:item_leftText="@string/repayment_time"
+            app:item_leftTextColor="@color/gray3"
+            app:item_leftTextMinWidth="50dp"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size3"
+
+            app:setRightText="@{data.AddDate}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:visibility="@{StringUtil.isNotEmpty(data.memo)?View.VISIBLE:View.GONE}"
+            app:item_leftText="@string/memo"
+            app:item_leftTextColor="@color/gray3"
+            app:item_leftTextMinWidth="50dp"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size3"
+            app:setRightText="@{data.memo}" />
+
+    </LinearLayout>
+</layout>

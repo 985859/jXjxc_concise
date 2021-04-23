@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="level"
+            type="Integer" />
+
+        <variable
+            name="iskg"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.ProductBean" />
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding1"
+        android:background="@drawable/layout_white_20"
+        android:padding="10dp">
+
+        <com.mylibrary.api.widget.picassoImage.PicassoImageView
+            android:id="@+id/itmProduct_Pic"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_Titel"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="8dp"
+            android:minHeight="18dp"
+            app:gravity="top"
+            app:item_leftText="名称"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_rightText=""
+            app:item_rightTextMaxLine="2"
+            app:item_rightTextPadding="6dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toStartOf="@+id/itmProduct_More"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_Pic"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/itmProduct_More"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:paddingStart="12dp"
+            android:paddingBottom="12dp"
+            android:src="@drawable/more"
+            android:visibility="@{type==0||type==3?View.VISIBLE:View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_Titel"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_Model"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="规格"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_rightText=""
+            app:item_rightTextPadding="6dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toStartOf="@+id/itmProduct_More"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_Pic"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_Titel"
+            app:setRightText="@{data.product_Model}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_Brand"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="品牌"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_rightText=""
+            app:item_rightTextPadding="6dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintBottom_toBottomOf="@+id/itmProduct_Pic"
+            app:layout_constraintEnd_toStartOf="@+id/itmProduct_Unit"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_Pic"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_Model"
+            app:setRightText="@{data.product_Brand_Name}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_Unit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="单位"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_rightText=""
+            app:item_rightTextPadding="6dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintBottom_toBottomOf="@+id/itmProduct_Pic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_Brand"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_Model"
+            app:setRightText="@{data.product_Unit_Name}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_Class"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="类别"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_rightText=""
+            app:item_rightTextPadding="6dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_Pic"
+            app:setRightText="@{data.className}" />
+
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_BuyPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="进货价"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="47dp"
+            app:item_rightText="0"
+            app:item_rightTextColor="@color/blue"
+            app:item_rightTextPadding="4dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toStartOf="@+id/itmProduct_Price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_Class"
+            app:setRightText="@{Util.setPrice(data.getProduct_BuyPrice())}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_Price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftIcon="@drawable/v0"
+            app:item_leftIconHeight="13dp"
+            app:item_leftIconWidth="13dp"
+            app:item_leftText="销售价"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="34dp"
+            app:item_rightText="0"
+            app:item_rightTextColor="@color/blue"
+            app:item_rightTextPadding="6dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_BuyPrice"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_Class" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_V1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            android:visibility="@{(type==0||type==3)&amp;&amp;level>=1?View.VISIBLE:View.GONE}"
+            app:gravity="bottom"
+            app:item_leftIcon="@drawable/v1"
+            app:item_leftIconHeight="13dp"
+            app:item_leftIconWidth="13dp"
+            app:item_leftText="@string/product_sell_preice"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="32dp"
+            app:item_rightText="0"
+            app:item_rightTextColor="@color/blue"
+            app:item_rightTextPadding="4dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toStartOf="@+id/itmProduct_V2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_Price"
+            app:setRightText="@{Util.setPrice(data.product_Vip1_Price)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_V2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            android:visibility="@{(type==0||type==3)&amp;&amp;level>=2?View.VISIBLE:View.GONE}"
+            app:gravity="bottom"
+            app:item_leftIcon="@drawable/v2"
+            app:item_leftIconHeight="13dp"
+            app:item_leftIconWidth="13dp"
+            app:item_leftText="@string/product_sell_preice"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="36dp"
+            app:item_rightText="0"
+            app:item_rightTextColor="@color/blue"
+            app:item_rightTextPadding="6dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_V1"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_Price"
+            app:setRightText="@{Util.setPrice(data.product_Vip2_Price)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_V3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            android:visibility="@{(type==0||type==3)&amp;&amp;level>=3?View.VISIBLE:View.GONE}"
+            app:gravity="bottom"
+            app:item_leftIcon="@drawable/v3"
+            app:item_leftIconHeight="13dp"
+            app:item_leftIconWidth="13dp"
+            app:item_leftText="@string/product_sell_preice"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="32dp"
+            app:item_rightText="0"
+            app:item_rightTextColor="@color/blue"
+            app:item_rightTextPadding="4dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toStartOf="@+id/itmProduct_V4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_V1"
+            app:setRightText="@{Util.setPrice(data.product_Vip3_Price)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_V4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            android:visibility="@{(type==0||type==3)&amp;&amp;level>=4?View.VISIBLE:View.GONE}"
+            app:gravity="bottom"
+            app:item_leftIcon="@drawable/v4"
+            app:item_leftIconHeight="13dp"
+            app:item_leftIconWidth="13dp"
+            app:item_leftText="@string/product_sell_preice"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="36dp"
+            app:item_rightText="0"
+            app:item_rightTextColor="@color/blue"
+            app:item_rightTextPadding="6dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_V3"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_V1"
+            app:setRightText="@{Util.setPrice(data.product_Vip4_Price)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_Inventory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="库存"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="47dp"
+            app:item_rightText="0"
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="4dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toStartOf="@+id/itmProduct_InventoryWarn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_V3"
+            app:setRightText="@{data.product_InventoryNum}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_InventoryWarn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="库存预警"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="52dp"
+            app:item_rightText="0"
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="6dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_Inventory"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_V3"
+            app:setRightText="@{data.product_InventoryWarningNum}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_InventoryMoney"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="库存成本"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="47dp"
+            app:item_rightText="0"
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="4dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toStartOf="@+id/itmProduct_Kg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_InventoryWarn"
+            app:setRightText="@{Util.setPrice(data.product_Amount)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_Kg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            android:visibility="@{iskg?View.VISIBLE:View.GONE}"
+            app:gravity="bottom"
+            app:item_leftText="@string/weight"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="52dp"
+            app:item_rightText="0"
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="4dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_InventoryMoney"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_InventoryWarn"
+            app:setRightText="@{Util.setKg(data.product_Kg)}" />
+
+        <TextView
+            android:id="@+id/itmProduct_StockType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/button_background"
+            android:paddingStart="20dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="6dp"
+            android:text="@{type==1?@string/stock_selct_int:@string/stock_selct_out}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_Size2"
+            android:visibility="@{type==0||type==3?View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_InventoryMoney" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

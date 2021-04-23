@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../app/app.iml" filepath="$PROJECT_DIR$/../app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../library/library.iml" filepath="$PROJECT_DIR$/../library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../mylibrary/mylibrary.iml" filepath="$PROJECT_DIR$/../mylibrary/mylibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pickerview/pickerview.iml" filepath="$PROJECT_DIR$/../pickerview/pickerview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../qmui/qmui.iml" filepath="$PROJECT_DIR$/../qmui/qmui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/richeditor.iml" filepath="$PROJECT_DIR$/richeditor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../wheelview/wheelview.iml" filepath="$PROJECT_DIR$/../wheelview/wheelview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../yiandeshop.iml" filepath="$PROJECT_DIR$/../yiandeshop.iml" />
+    </modules>
+  </component>
+</project>

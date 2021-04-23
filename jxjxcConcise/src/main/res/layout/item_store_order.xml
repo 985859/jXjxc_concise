@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.StockOrderBean" />
+
+
+        <variable
+            name="showYuE"
+            type="Boolean" />
+
+        <variable
+            name="showDebt"
+            type="Boolean" />
+
+
+        <import type="android.view.View" />
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/layout_white_20"
+        android:padding="12dp">
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_No"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="18dp"
+            android:paddingEnd="8dp"
+            app:gravity="bottom"
+            app:item_leftText="单号"
+            app:item_leftTextColor="@color/gray4"
+            app:item_leftTextMinWidth="46dp"
+
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toStartOf="@+id/itmStoreOrder_State"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setItemLeftText='@{type ==1 ? "入库单号":"出库单号"}'
+            app:setRightText="@{data.order_No}" />
+
+
+        <com.mylibrary.api.widget.VariedTextView
+            android:id="@+id/itmStoreOrder_State"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility='@{data.order_State==0?View.VISIBLE:View.GONE}'
+            app:attr_background="@color/blue"
+            app:attr_cornersRaius="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/itmStoreOrder_IsEdit"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.mylibrary.api.widget.VariedTextView
+            android:id="@+id/itmStoreOrder_IsEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:text="@string/audit_opposite"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility='@{data.order_IsEdit==1?View.VISIBLE:View.GONE}'
+            app:attr_background="@color/green"
+            app:attr_cornersRaius="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/itmStoreOrder_Type"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.mylibrary.api.widget.VariedTextView
+            android:id="@+id/itmStoreOrder_Type"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:attr_background="@color/blue"
+            app:attr_cornersRaius="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_HongName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:minHeight="18dp"
+            android:visibility='@{data.order_State==0?View.VISIBLE:View.GONE}'
+            app:gravity="bottom"
+            app:item_leftText="红冲人"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="46dp"
+
+            app:item_rightTextColor="@color/red"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_No"
+            app:setRightText="@{data.order_Hong_Name}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_HongDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:minHeight="18dp"
+            android:visibility='@{data.order_State==0?View.VISIBLE:View.GONE}'
+            app:gravity="bottom"
+            app:item_leftText="红冲时间"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="46dp"
+
+            app:item_rightTextColor="@color/red"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_HongName"
+            app:setRightText="@{data.order_HongDate}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_HongMemo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:minHeight="18dp"
+            android:visibility='@{data.order_State==0?View.VISIBLE:View.GONE}'
+            app:gravity="bottom"
+            app:item_leftText="红冲原因"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="46dp"
+
+            app:item_rightTextColor="@color/red"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_HongDate"
+            app:setRightText="@{data.order_Hong_Memo}" />
+
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_Amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="合计金额"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="46dp"
+            app:item_rightTextColor="@color/blue"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toStartOf="@+id/itmProduct_PayableAmount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_HongMemo"
+            app:setRightText="@{Util.setPrice(data.order_Amount)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_PayableAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="实付金额"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="46dp"
+
+            app:item_rightTextColor="@color/blue"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_Amount"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_HongMemo"
+            app:setItemLeftText='@{type ==1 ? @string/payable_amout:@string/receivable_amount}'
+            app:setRightText="@{Util.setPrice(data.order_PayableAmount)}" />
+
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_AllAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="总金额"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="46dp"
+
+            app:item_rightTextColor="@color/blue"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toStartOf="@+id/itmProduct_DebetAmount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_Amount"
+            app:setItemLeftText="@{type==1?@string/all_pay_amount:@string/all_amount}"
+            app:setRightText="@{Util.setPrice(data.order_AllAmount)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_DebetAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:minHeight="18dp"
+            android:visibility="@{type==2&amp;&amp;showYuE?View.VISIBLE:View.GONE}"
+            app:gravity="bottom"
+            app:item_leftText="@string/remain_dedcut"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="46dp"
+            app:item_rightTextColor="@color/blue"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_AllAmount"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_Amount"
+            app:setRightText="@{Util.setPrice(data.order_Balance)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_DebtAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:minHeight="18dp"
+            android:visibility="@{showDebt?View.VISIBLE:View.GONE}"
+            app:gravity="bottom"
+            app:item_leftText="金额"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="46dp"
+            app:item_rightTextColor="@color/blue"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toStartOf="@+id/itmProduct_FreightAmount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_AllAmount"
+            app:setItemLeftText="@{type==1?@string/on_creditAmount:@string/debt_Amount}"
+            app:setRightText="@{Util.setPrice(data.order_Debt)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_FreightAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="@string/freight_amout"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="46dp"
+
+            app:item_rightTextColor="@color/blue"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_DebtAmount"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_AllAmount"
+            app:setRightText="@{Util.setPrice(data.order_FreightAmount)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_Data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="46dp"
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_FreightAmount"
+            app:layout_goneMarginTop="4dp"
+            app:setItemLeftText='@{type ==1 ? "入库时间":"出库时间"}'
+            app:setRightText="@{data.order_AddDate}" />
+
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_User"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="46dp"
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toStartOf="@+id/itmProduct_HandlerName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_Data"
+            app:setItemLeftText='@{type ==1 ? @string/supplier:@string/user}'
+            app:setRightText='@{StringUtil.isNotEmpty(data.order_ComName)?data.order_ComName:type==1? @string/retail:@string/retai12}' />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_HandlerName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="经手人"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="46dp"
+
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmProduct_User"
+            app:layout_constraintTop_toTopOf="@+id/itmProduct_User"
+            app:setRightText="@{data.order_Worker_Name}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmProduct_Memo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:minHeight="18dp"
+            android:visibility="@{StringUtil.isNotEmpty(data.order_Memo)?View.VISIBLE:View.GONE}"
+            app:gravity="bottom"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextMinWidth="46dp"
+
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextMaxLine="2"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_HandlerName"
+            app:layout_goneMarginTop="4dp"
+            app:setItemLeftText='@{ @string/memo}'
+            app:setRightText="@{data.order_Memo}" />
+
+
+        <Button
+            android:id="@+id/itmStockOrder_BT"
+            style="@style/buttonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:text="@string/invoice_record"
+            android:visibility="@{data.invoice?View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmProduct_Memo" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

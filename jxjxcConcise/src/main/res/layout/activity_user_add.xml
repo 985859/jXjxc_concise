@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="isShowLevel"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.UserBean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        tools:context=".activity.UserAddActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/userAdd_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_Title="@string/user_add" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/layout_must" />
+
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:layout_width="match_parent"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+
+                    <com.mylibrary.api.widget.EditView
+                        android:id="@+id/userAdd_Com"
+                        style="@style/ViewStyle"
+
+                        app:edit_Hint="@{data.user_Type==1?@string/client_hint_ComName:@string/supplier_hint_ComName}"
+                        app:edit_Must="1"
+                        app:edit_Text="@={data.user_ComName}"
+                        app:edit_Title="@{data.user_Type==1?@string/client_name:@string/supplier_name}" />
+
+                    <com.mylibrary.api.widget.EditView
+                        style="@style/ViewStyle"
+                        app:edit_Hint="@{data.user_Type==1?@string/client_hint_LinkMan:@string/supplier_hint_LinkMan}"
+                        app:edit_Text="@={data.user_Name}"
+                        app:edit_Title="@string/LinkMan" />
+
+                    <com.mylibrary.api.widget.EditView
+                        android:id="@+id/userAdd_Mob"
+                        style="@style/ViewStyle"
+                        android:hint="@{data.user_Type==1?@string/client_hint_Tel:@string/supplier_hint_Tel}"
+                        android:inputType="phone"
+                        android:maxLength="11"
+                        app:edit_Must="1"
+                        app:edit_Text="@={data.user_Mob}"
+                        app:edit_Title="@string/linkMan_Tel" />
+
+
+                    <com.yiande.jxjxc.view.TypeView
+                        android:id="@+id/userAdd_Class"
+                        style="@style/ViewStyle"
+                        android:hint="@{data.user_Type==1?@string/client_Class_Hint:@string/supplier_Class_Hint}"
+                        app:title="@{data.user_Type==1?@string/client_Class:@string/supplier_Class}"
+                        app:typeView_addText="@{data.user_Type==1?@string/client_Class_Add:@string/supplier_Class_Add}" />
+
+                    <com.mylibrary.api.widget.EditView
+                        style="@style/ViewStyle"
+                        android:inputType="phone"
+                        android:maxLength="11"
+                        app:edit_Hint="@{data.user_Type==1?@string/tel_hint1:@string/tel_hint2}"
+                        app:edit_Text="@={data.user_Tel}"
+                        app:edit_Title="@string/tel" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/userAdd_AddressRec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/userAdd_LogisticsRec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <com.yiande.jxjxc.view.OrderTypeView
+                    android:id="@+id/userAdd_State"
+                    style="@style/LayoutStyle"
+                    app:title="@string/state"
+                    app:type="@{data.user_IsOK==1?0:1}"
+                    app:type_color1="@color/blue"
+                    app:type_color2="@color/gray"
+                    app:type_text1="@string/enable"
+                    app:type_text2="@string/disable" />
+
+                <com.mylibrary.api.widget.EditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin2"
+                    android:layout_marginTop="@dimen/margin2"
+                    android:layout_marginEnd="@dimen/margin2"
+                    android:background="@drawable/layout_white_20"
+                    android:maxLength="300"
+                    android:minHeight="120dp"
+                    android:padding="10dp"
+                    android:paddingBottom="@dimen/padding2"
+                    app:edit_Hint="@string/memo_hint"
+                    app:edit_ShowNumber="true"
+                    app:edit_SingleLine="false"
+                    app:edit_Text="@={data.user_Memo}"
+                    app:edit_Title="@string/memo" />
+
+                <Button
+                    android:id="@+id/userAdd_BT"
+                    style="@style/buttonStyle"
+                    android:text="@string/computer_post" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

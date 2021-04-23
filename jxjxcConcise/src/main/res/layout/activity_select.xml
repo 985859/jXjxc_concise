@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+
+        <com.mylibrary.api.widget.TopSearchView
+            android:id="@+id/selectTop"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:topSearchBackground="@drawable/search_background"
+            app:topSearchHins="@string/hint_select"
+
+            app:topSearchRightText="@string/cancel"
+            app:topSearchRightTextColor="@color/white"
+            app:topSearchTitleColor="@color/white" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/layout_white_top_20"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/select_Layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/select_HistoryText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center_vertical"
+                            android:text="最近搜索"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/text_Size3"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="14dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_white_20"
+                            android:gravity="right"
+                            android:orientation="horizontal">
+
+
+                            <com.mylibrary.api.widget.VariedTextView
+                                android:id="@+id/select_delete"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:drawableLeft="@drawable/clear"
+                                android:drawablePadding="4dp"
+                                android:gravity="center"
+                                android:text="清空最近搜索"
+                                android:textColor="@color/gray3"
+                                android:textSize="@dimen/text_Size2"
+                                app:attr_drawableLeftHeight="14dp"
+                                app:attr_drawableLeftWidth="14dp" />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <com.mylibrary.api.widget.FlowLayout
+                        android:id="@+id/select_History"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        app:flow_view_background="@drawable/shape_texet" />
+
+
+                </LinearLayout>
+            </ScrollView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/selectRec"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+</layout>

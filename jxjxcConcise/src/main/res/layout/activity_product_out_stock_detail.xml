@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.OrderInfoBean" />
+
+        <variable
+            name="showDebt"
+            type="Boolean" />
+
+        <variable
+            name="showYuE"
+            type="Boolean" />
+
+        <variable
+            name="showBT"
+            type="Boolean" />
+
+        <variable
+            name="shoWkg"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/stockOutDetail_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_RightText="保存相册"
+            app:attr_Title="@string/stock_out_detail" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.yiande.jxjxc.view.OutStockView
+                    android:id="@+id/stockOutDetail_Layout"
+                    android:layout_width="750px"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/background"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp">
+
+
+                    <LinearLayout
+                        style="@style/LayoutStyle"
+                        android:orientation="vertical">
+
+
+                        <include
+                            layout="@layout/layout_no"
+                            app:data="@{data}" />
+
+                        <include
+                            layout="@layout/layout_type_view"
+                            app:color="@{data.order_Type==3?@color/green:@color/yellow}"
+                            app:text="@{data.order_Type==3?@string/stock_type3:@string/stock_type4}"
+                            app:title="@{@string/stock_out_type}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/stock_out_product"
+                            android:textColor="@color/blue" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/stockOutDetail_ProductRec"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="6dp" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:divider="@drawable/line_2px"
+                            android:orientation="vertical"
+                            android:showDividers="middle">
+
+
+                            <com.yiande.jxjxc.view.ItemTextView
+                                style="@style/ViewStyle"
+                                app:setText="@{StringUtil.isEmpty(data.order_ComName)?@string/retai12:data.order_ComName}"
+                                app:title="@string/user_Name" />
+
+                            <com.yiande.jxjxc.view.ItemTextView
+                                style="@style/ViewStyle"
+                                android:visibility="@{StringUtil.isNotEmpty(data.order_Name)?View.VISIBLE:View.GONE}"
+                                app:setText="@{data.order_Name}"
+                                app:title="@string/LinkMan_name" />
+
+                            <com.yiande.jxjxc.view.ItemTextView
+                                style="@style/ViewStyle"
+                                android:visibility="@{StringUtil.isNotEmpty(data.order_Mob)?View.VISIBLE:View.GONE}"
+                                app:setText="@{data.order_Mob}"
+                                app:title="@string/linkMan_Tel" />
+
+                            <com.yiande.jxjxc.view.ItemTextView
+                                style="@style/ViewStyle"
+                                android:hint="@string/client_hint_Address"
+                                android:visibility="@{StringUtil.isNotEmpty(data.order_Address)?View.VISIBLE:View.GONE}"
+                                app:setText="@{data.order_Address}"
+                                app:title="@string/address" />
+
+
+                            <com.yiande.jxjxc.view.ItemTextView
+                                style="@style/ViewStyle"
+                                android:visibility="@{StringUtil.isNotEmpty(data.order_Admin_Name)?View.VISIBLE:View.GONE}"
+                                app:setText="@{data.order_Admin_Name}"
+                                app:title="@string/sellAM" />
+
+                            <com.yiande.jxjxc.view.ItemTextView
+                                android:id="@+id/stockOutDetain_HandelerName"
+                                style="@style/ViewStyle"
+                                app:setText="@{data.order_Worker_Name}"
+                                app:title="@string/handlerName" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        style="@style/LayoutStyle"
+                        android:divider="@drawable/line_2px"
+                        android:orientation="vertical"
+                        android:showDividers="middle">
+
+                        <com.yiande.jxjxc.view.PriceView
+                            style="@style/ViewStyle"
+                            app:priceView_Edit="false"
+                            app:setEditText='@{data.order_Amount}'
+                            app:subTitle="@string/all_amout_sub"
+                            app:title="@string/all_amout" />
+
+                        <com.yiande.jxjxc.view.ItemTextView
+                            android:id="@+id/stockOut_KgAmount"
+                            style="@style/ViewStyle"
+                            android:text='@{Util.setKg(data.order_KgAmount)}'
+                            android:visibility="@{shoWkg?View.VISIBLE:View.GONE}"
+                            app:subTitle="@string/kg_amunt_sub"
+                            app:title="@string/kg_amunt" />
+
+                        <com.yiande.jxjxc.view.PriceView
+                            style="@style/ViewStyle"
+                            android:visibility="@{StringUtil.isNotEmpty(data.order_FreightAmount)?View.VISIBLE:View.GONE}"
+                            app:priceView_Edit="false"
+                            app:setEditText='@={data.order_FreightAmount}'
+                            app:subTitle="@string/freight_amout_sub"
+                            app:title="@string/freight_amout" />
+
+                        <com.yiande.jxjxc.view.PriceView
+                            android:id="@+id/stockOutDetail_PayableAmount"
+                            style="@style/ViewStyle"
+                            android:hint="@string/receivable_amount_hint"
+                            app:must="1"
+                            app:priceView_Edit="false"
+                            app:setEditText='@={data.order_PayableAmount}'
+                            app:subTitle="@string/receivable_amount_sub"
+                            app:title="@string/receivable_amount" />
+
+                        <com.yiande.jxjxc.view.PriceView
+                            android:id="@+id/stockOutDetail_AllAmount"
+                            style="@style/ViewStyle"
+                            app:priceView_Edit="false"
+                            app:setEditText='@{data.order_RealyAmount}'
+                            app:subTitle="@{showYuE?@string/actual_amount_sub5:@string/actual_amount_sub4}"
+                            app:title="@string/actual_amount" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin3"
+                        android:layout_marginTop="@dimen/margin3"
+                        android:layout_marginEnd="@dimen/margin3"
+                        android:orientation="horizontal"
+
+                        android:visibility="@{showYuE?View.VISIBLE:View.GONE}">
+
+                        <com.yiande.jxjxc.view.PriceView
+                            android:id="@+id/stockOutDetail_DeductRemain"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_white_br_20"
+                            android:hint="@string/hint_amount"
+                            android:padding="@dimen/padding3"
+                            app:priceView_Edit="false"
+                            app:priceView_IconSize="16dp"
+                            app:priceView_ShowLine="true"
+                            app:setEditText='@{StringUtil.isNotEmpty(data.order_Balance)?data.order_Balance:"0"}'
+                            app:title="@string/remain_dedcut" />
+
+                        <com.yiande.jxjxc.view.PriceView
+
+                            android:id="@+id/stockOutDetail_Remain"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_white_bl_20"
+                            android:hint="@string/hint_amount"
+                            android:padding="@dimen/padding3"
+                            app:priceView_Edit="false"
+                            app:priceView_IconSize="16dp"
+                            app:priceView_ShowLine="true"
+
+                            app:setEditText='@{StringUtil.isNotEmpty(data.user_Balance)?data.user_Balance:"0"}'
+                            app:title="@string/remain" />
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin3"
+                        android:layout_marginTop="@dimen/margin3"
+                        android:layout_marginEnd="@dimen/margin3"
+                        android:background="@color/background">
+
+                        <com.yiande.jxjxc.view.PriceView
+                            android:id="@+id/stockOutDetail_Cash"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:background="@drawable/layout_white_br_20"
+                            android:hint="@string/hint_amount"
+                            android:padding="@dimen/padding3"
+                            app:layout_constraintEnd_toStartOf="@+id/stockOutDetail_Bank"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:priceView_Edit="false"
+                            app:priceView_Icon="@drawable/cash"
+                            app:priceView_IconSize="16dp"
+                            app:priceView_ShowLine="true"
+                            app:setEditText="@={data.order_Cash}"
+                            app:title="@string/cash" />
+
+                        <com.yiande.jxjxc.view.PriceView
+                            android:id="@+id/stockOutDetail_Bank"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:background="@drawable/layout_white_bl_20"
+                            android:hint="@string/hint_amount"
+                            android:padding="@dimen/padding3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/stockOutDetail_Cash"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:priceView_Edit="false"
+                            app:priceView_Icon="@drawable/bank"
+                            app:priceView_IconSize="16dp"
+                            app:priceView_ShowLine="true"
+                            app:setEditText="@={data.order_Bank}"
+                            app:title="@string/bank" />
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/plus"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.yiande.jxjxc.view.PriceView
+                            android:id="@+id/stockOutDetail_Alipay"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="6dp"
+                            android:background="@drawable/layout_white_tr_20"
+                            android:hint="@string/hint_amount"
+                            android:padding="@dimen/padding3"
+                            app:layout_constraintEnd_toStartOf="@+id/stockOutDetail_wechat"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/stockOutDetail_Cash"
+                            app:priceView_Edit="false"
+                            app:priceView_Icon="@drawable/alipay"
+                            app:priceView_IconSize="16dp"
+                            app:priceView_ShowLine="true"
+                            app:setEditText="@={data.order_Alipay}"
+                            app:title="@string/aliplay" />
+
+                        <com.yiande.jxjxc.view.PriceView
+                            android:id="@+id/stockOutDetail_wechat"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:background="@drawable/layout_white_tl_20"
+                            android:hint="@string/hint_amount"
+                            android:padding="@dimen/padding3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/stockOutDetail_Alipay"
+                            app:layout_constraintTop_toTopOf="@+id/stockOutDetail_Alipay"
+                            app:priceView_Edit="false"
+                            app:priceView_Icon="@drawable/wechat"
+                            app:priceView_IconSize="16dp"
+                            app:priceView_ShowLine="true"
+                            app:setEditText="@={data.order_Wechat}"
+                            app:title="@string/wechat" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin3"
+                        android:layout_marginTop="@dimen/margin3"
+                        android:layout_marginEnd="@dimen/margin3"
+                        android:orientation="horizontal"
+                        android:visibility="@{showDebt?View.VISIBLE:View.GONE}">
+
+                        <com.yiande.jxjxc.view.PriceView
+                            android:id="@+id/stockOutDetail_Debt"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_white_br_20"
+                            android:padding="@dimen/padding3"
+                            android:visibility="@{StringUtil.isEmpty(data.order_Debt)?View.GONE:View.VISIBLE}"
+                            app:priceView_Edit="false"
+                            app:priceView_IconSize="16dp"
+                            app:priceView_ShowLine="true"
+                            app:setEditText='@{data.order_Debt}'
+                            app:title="@string/debt_Amount" />
+
+                        <com.yiande.jxjxc.view.PriceView
+                            android:id="@+id/stockOutDetail_AllDebt"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_white_bl_20"
+                            android:hint="@string/hint_amount"
+                            android:padding="@dimen/padding3"
+                            android:visibility="@{StringUtil.isEmpty(data.user_AllDebt)?View.GONE:View.VISIBLE}"
+                            app:priceView_Edit="false"
+                            app:priceView_IconSize="16dp"
+                            app:priceView_ShowLine="true"
+                            app:setEditText='@{data.user_AllDebt}'
+                            app:title="@string/debt_all" />
+                    </LinearLayout>
+
+
+                    <com.yiande.jxjxc.view.EditLengthView
+                        android:id="@+id/stockOutDetail_Memo"
+                        style="@style/LayoutStyle"
+                        android:hint='@{StringUtil.isNotEmpty(data.order_Memo)?"":@string/memo_no}'
+                        android:maxLength="300"
+                        app:edit="false"
+                        app:setEditText="@={data.order_Memo}"
+                        app:showEdit="true"
+                        app:title="@string/memo" />
+
+                    <com.mylibrary.api.widget.VariedTextView
+                        android:id="@+id/stockOutDetail_Hong"
+                        android:layout_width="@dimen/buttonWidth"
+                        android:layout_height="@dimen/buttonHeight"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginBottom="30dp"
+                        android:gravity="center"
+
+                        android:text="红冲"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_Size4"
+                        android:visibility="@{data.order_IsHong?View.VISIBLE:View.GONE}"
+                        app:attr_background="@color/red"
+                        app:attr_cornersRaius="@dimen/radius3" />
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

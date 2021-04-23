@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.mylibrary.api.widget.VariedTextView
+            android:id="@+id/Pricie_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:gravity="bottom"
+
+            android:textColor="@color/blue"
+            android:textSize="@dimen/text_Size3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Pricie_SubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:gravity="bottom"
+
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/text_Size2"
+            app:layout_constraintBottom_toBottomOf="@+id/Pricie_Title"
+            app:layout_constraintStart_toEndOf="@+id/Pricie_Title" />
+
+        <View
+            android:id="@+id/Pricie_V"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/line_2px"
+            app:layout_constraintBottom_toTopOf="@+id/Pricie_T"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Pricie_Title" />
+
+        <TextView
+            android:id="@+id/Pricie_T"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:paddingStart="6dp"
+            android:text="¥"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_Size3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Pricie_V" />
+
+        <com.mylibrary.api.widget.ClearEditText
+            android:id="@+id/Pricie_Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@null"
+            android:ellipsize="start"
+
+            android:gravity="top"
+
+            android:inputType="numberDecimal"
+            android:paddingStart="4dp"
+            android:singleLine="true"
+
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_Size3"
+            app:ced_Size_clear="16dp"
+            app:ced_interval="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Pricie_T"
+            app:layout_constraintTop_toBottomOf="@+id/Pricie_V" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

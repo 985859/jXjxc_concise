@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.AfterServiceProductBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_white_top_20"
+        android:orientation="vertical"
+        android:paddingBottom="16dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:id="@+id/popAfterServicePro_Title"
+                style="@style/textStyle2"
+                android:layout_gravity="center"
+                android:text="@string/after_service_product"
+                android:textSize="@dimen/text_Size3" />
+
+
+            <ImageView
+                android:id="@+id/popAfterServicePro_Close"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:padding="12dp"
+                android:src="@drawable/close_g" />
+
+        </FrameLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <com.mylibrary.api.widget.ItemView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:item_leftIconWidth="56dp"
+                    app:item_leftText="@string/product_Name"
+                    app:item_leftTextColor="@color/gray4"
+                    app:item_leftTextMinWidth="56dp"
+                    app:item_rightTextSize="@dimen/text_Size3"
+                    app:setRightText="@{data.title}" />
+
+                <com.mylibrary.api.widget.ItemView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:item_leftText="@string/product_model"
+                    app:item_leftTextColor="@color/gray4"
+                    app:item_leftTextMinWidth="56dp"
+                    app:item_rightTextSize="@dimen/text_Size3"
+                    app:setRightText="@{data.model}" />
+
+
+                <TextView
+                    style="@style/textStyle"
+                    android:text="@string/supplier"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/text_Size3" />
+
+                <com.mylibrary.api.widget.ItemView
+                    android:id="@+id/popAfterServicePro_Supplier"
+                    style="@style/editStyle"
+                    android:minHeight="36dp"
+                    app:gravity="center_vertical"
+                    app:item_leftText="@string/supplier_select"
+                    app:item_leftTextColor="@color/gray3"
+                    app:item_leftTextMinWidth="56dp"
+                    app:item_leftTextSize="@dimen/text_Size3"
+                    app:item_leftWight="1"
+                    app:item_rightIcon="@drawable/next_black"
+                    app:item_rightIconHeight="16dp"
+                    app:item_rightIconWidth="16dp"
+                    app:item_rightTextColor="@color/blue"
+                    app:item_rightTextSize="@dimen/text_Size3" />
+
+                <TextView
+                    style="@style/textStyle"
+                    android:text="@string/maintain_quantity"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/text_Size3" />
+
+                <com.mylibrary.api.widget.ClearEditText
+                    android:id="@+id/popAfterServicePro_Quantity"
+                    style="@style/editStyle"
+                    android:hint="@string/maintain_quantity_hint"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:text="@={data.quantity}"
+                    android:textSize="@dimen/text_Size3" />
+
+                <TextView
+                    style="@style/textStyle"
+                    android:text="@string/maintain_cost"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/text_Size3" />
+
+                <com.mylibrary.api.widget.ClearEditText
+                    android:id="@+id/popAfterServicePro_Money"
+                    style="@style/editStyle"
+                    android:hint="@string/maintain_cost_hint"
+                    android:inputType="numberDecimal"
+                    android:text="@={data.money}"
+                    android:textSize="@dimen/text_Size3" />
+
+                <TextView
+                    style="@style/textStyle"
+                    android:text="@string/fault_sketch"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/text_Size3" />
+
+                <com.mylibrary.api.widget.ClearEditText
+                    android:id="@+id/popAfterServicePro_FaultSketch"
+                    style="@style/editStyle"
+                    android:hint="@string/fault_sketch_hint"
+                    android:minHeight="80dp"
+                    android:padding="10dp"
+                    android:text="@={data.text}"
+                    android:textSize="@dimen/text_Size3" />
+
+                <Button
+                    android:id="@+id/popAfterServicePro_BT"
+                    style="@style/buttonStyle"
+                    android:layout_marginTop="30dp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

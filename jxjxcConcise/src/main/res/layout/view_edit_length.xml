@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/editLength_Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:textColor="@color/blue"
+                android:textSize="@dimen/text_Size3" />
+
+
+            <com.mylibrary.api.widget.VariedTextView
+                android:id="@+id/editLength_BT"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:drawableLeft="@drawable/edit"
+                android:drawablePadding="6dp"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="编辑"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_Size2"
+
+                app:attr_background="@color/blue"
+                app:attr_cornersRaius="@dimen/radius3"
+                app:attr_drawableLeftHeight="12dp"
+                app:attr_drawableLeftWidth="12dp" />
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/editLength_Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@null"
+            android:gravity="top"
+            android:minHeight="80dp"
+            android:paddingStart="6dp"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_Size4" />
+
+        <TextView
+            android:id="@+id/editLength_Number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="right"
+            android:text=""
+            android:textColor="@color/contentColor"
+            android:textSize="@dimen/text_Size2" />
+    </LinearLayout>
+</layout>

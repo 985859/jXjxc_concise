@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="showEmpty"
+            type="Boolean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        tools:context=".activity.EditActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/edit_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_RightText="完成"
+            app:attr_Title="快捷操作" />
+
+        <LinearLayout
+            style="@style/LayoutStyle"
+            android:orientation="vertical">
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_weight="1"
+                app:item_leftText="快捷操作"
+                app:item_leftTextColor="@color/textColor"
+                app:item_leftTextSize="@dimen/text_Size3"
+                app:item_rightText="日常操作一步达"
+                app:item_rightTextColor="@color/gray4"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="选择下方功能入口添加至快捷操作"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/text_Size3"
+                android:visibility="@{showEmpty?View.VISIBLE:View.GONE}" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/edit_Rec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin3"
+                android:visibility="@{showEmpty?View.GONE:View.VISIBLE}" />
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/edit_EntryRec"
+            style="@style/LayoutStyle"
+            android:layout_marginBottom="@dimen/margin3" />
+
+
+    </LinearLayout>
+</layout>

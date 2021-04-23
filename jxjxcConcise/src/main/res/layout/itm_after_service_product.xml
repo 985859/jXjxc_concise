@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.AfterServiceProductBean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding1"
+        android:background="@drawable/layout_white_20"
+        android:padding="10dp">
+
+        <com.mylibrary.api.widget.picassoImage.PicassoImageView
+            android:id="@+id/itmAfterServiceProduct_Pic"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:setPicUrl="@{data.pic}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmAfterServiceProduct_Titel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:minHeight="18dp"
+            app:gravity="top"
+            app:item_leftText="名称"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextSize="@dimen/text_Size2"
+            app:item_rightText=""
+            app:item_rightTextMaxLine="2"
+            app:item_rightTextPadding="6dp"
+            app:item_rightTextSize="@dimen/text_Size3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmAfterServiceProduct_Pic"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setRightText="@{data.title}" />
+
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmAfterServiceProduct_Model"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minHeight="18dp"
+            app:gravity="bottom"
+            app:item_leftText="规格"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextSize="@dimen/text_Size2"
+            app:item_rightText=""
+            app:item_rightTextPadding="6dp"
+            app:item_rightTextSize="@dimen/text_Size3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmAfterServiceProduct_Pic"
+            app:layout_constraintTop_toBottomOf="@+id/itmAfterServiceProduct_Titel"
+            app:setRightText="@{data.model}" />
+
+
+        <Button
+            android:id="@+id/itmAfterServiceProduct_BT"
+            style="@style/buttonStyle"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="选择售后"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmAfterServiceProduct_Pic" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

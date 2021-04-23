@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <!--1 欠款 2赊账 -->
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="state"
+            type="Integer" />
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.DebtManageListActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_white_bl_20"
+            android:orientation="vertical">
+
+            <com.mylibrary.api.widget.TopView
+                android:id="@+id/debtManageList_Top"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/topHight"
+                android:background="@drawable/top_background"
+                app:attr_RightText="新增记录"
+                app:setToptTilte="@{type==2?@string/on_credit_supplier:@string/debt_client}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{()->onClick.accept(2)}"
+                    android:text="@string/all"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/text_Size"
+                    app:setTextColor="@{state==2?@color/blue:@color/textColor}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{()->onClick.accept(0)}"
+                    android:text="@{type==2?@string/on_credit:@string/debt}"
+
+                    android:textSize="@dimen/text_Size"
+                    app:setTextColor="@{state==0?@color/blue:@color/textColor}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{()->onClick.accept(1)}"
+                    android:text="@string/pay_off"
+                    android:textSize="@dimen/text_Size"
+                    app:setTextColor="@{state==1?@color/blue:@color/textColor}" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/debtManageList_Refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/debtManageList_Rec"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="6dp" />
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+    </LinearLayout>
+</layout>

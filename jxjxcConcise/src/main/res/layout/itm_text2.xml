@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <com.mylibrary.api.widget.VariedTextView
+        android:id="@+id/itm_Text2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:textSize="@dimen/text_Size3"
+        android:textColor="@color/blue"/>
+</layout>
+

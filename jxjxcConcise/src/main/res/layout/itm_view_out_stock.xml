@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="index"
+            type="Integer" />
+
+        <variable
+            name="isPrintKg"
+            type="Integer" />
+
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.OrderProAddBean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:layout_marginBottom="10px"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:item_leftText="序    号:"
+                app:setRightText="@{String.valueOf(index)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8px"
+                android:layout_weight="1"
+                android:visibility="@{data.Product_No==null?View.GONE:View.VISIBLE}"
+                app:item_leftWight="1"
+                app:item_rightText=""
+                app:item_rightWight="0"
+                app:setRightText="@{String.format(@string/number_no,data.Product_No)}" />
+
+        </LinearLayout>
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4px"
+            app:item_leftText="名    称:"
+            app:setRightText="@{data.orderDetail_Product_Title}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4px"
+            app:item_leftText="规    格:"
+            app:setRightText="@{data.orderDetail_Product_Model}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4px"
+            app:item_leftText="数    量:"
+            app:setRightText="@{String.valueOf(data.orderDetail_Quantity)}" />
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4px"
+            android:visibility="@{isPrintKg==1&amp;&amp;type==0?View.VISIBLE:View.GONE}"
+            app:item_leftText="重    量:"
+            app:setRightText="@{String.format(@string/kg,data.orderDetail_Kg)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4px"
+            app:item_leftText="单    价:"
+            app:setRightText="@{String.format(@string/rmb,data.orderDetail_Price)}" />
+
+
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="4px"
+            android:visibility="@{isPrintKg==1&amp;&amp;type==0?View.VISIBLE:View.GONE}"
+            app:item_leftText="重量小计"
+            app:setRightText="@{String.format(@string/kg,data.orderDetail_KgAmount)}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="4px"
+            app:item_leftText="@string/subtotal"
+            app:setRightText="@{String.format(@string/rmb,data.orderDetail_Amount)}" />
+    </LinearLayout>
+</layout>

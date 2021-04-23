@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="title" format="string" />
+    <attr name="subTitle" format="string" />
+    <attr name="must" format="integer" />
+
+
+    <declare-styleable name="EditLengthView">
+        <attr name="android:text" />
+        <attr name="android:hint" />
+        <attr name="android:maxLength" />
+        <attr name="android:inputType" />
+        <attr name="title" />
+        <attr name="must" />
+        <attr name="edit" format="boolean"></attr>
+        <attr name="showEdit" format="boolean"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="EditItemView">
+        <attr name="android:text" />
+        <attr name="android:hint" />
+        <attr name="android:inputType" />
+        <attr name="android:maxLength" />
+        <attr name="title" />
+        <attr name="must" />
+    </declare-styleable>
+
+
+    <declare-styleable name="PriceView">
+        <attr name="android:text" />
+        <attr name="android:hint" />
+        <attr name="android:maxLength" />
+        <attr name="title" />
+        <attr name="subTitle" />
+        <attr name="must" />
+        <attr name="priceView_Icon" format="reference" />
+        <attr name="priceView_IconSize" format="dimension" />
+        <attr name="priceView_Edit" format="boolean" />
+        <attr name="priceView_AddFilter" format="boolean" />
+        <attr name="priceView_ShowLine" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="TypeView">
+        <attr name="android:text" />
+        <attr name="android:hint" />
+        <attr name="title" />
+        <attr name="subTitle" />
+        <attr name="must" />
+        <attr name="typeView_addText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ItemTextView">
+        <attr name="android:text" />
+        <attr name="android:hint" />
+        <attr name="title" />
+        <attr name="subTitle" />
+        <attr name="must" />
+    </declare-styleable>
+
+    <declare-styleable name="LevelView">
+        <attr name="level_TitleColor" format="color" />
+        <attr name="level_TitleSelectColor" format="color" />
+        <attr name="level_IndicatorHeight" format="dimension" />
+        <attr name="level_Max" format="integer" />
+    </declare-styleable>
+
+
+    <declare-styleable name="OrderTypeView">
+        <attr name="title" />
+        <attr name="type_text1" format="string" />
+        <attr name="type_text2" format="string" />
+        <attr name="type_color1" format="reference" />
+        <attr name="type_color2" format="reference" />
+        <attr name="type" format="integer" />
+
+    </declare-styleable>
+
+
+    <declare-styleable name="AZWaveSideBarView">
+        <!-- slide bar 有效内容背景 -->
+        <attr name="backgroundColor" format="color|reference" />
+        <!-- slide bar　描边 -->
+        <attr name="strokeColor" format="color|reference" />
+        <!-- slide bar 文字颜色 -->
+        <attr name="textColor" format="color|reference" />
+        <!-- slide bar　文字大小 -->
+        <attr name="textSize" format="dimension" />
+        <!-- slide bar 选中文字颜色 -->
+        <attr name="selectTextColor" format="color|reference" />
+        <!-- slide bar 选中文字大小 -->
+        <attr name="selectTextSize" format="dimension" />
+        <!-- slide bar　选中时候提示文字颜色 -->
+        <attr name="hintTextColor" format="color|reference" />
+        <!-- slide bar　选中时候提示文字大小 -->
+        <attr name="hintTextSize" format="dimension" />
+        <!-- slide bar　选中时候提示圆形半径 -->
+        <attr name="hintCircleRadius" format="dimension" />
+        <!-- slide bar　选中时候提示圆形颜色 -->
+        <attr name="hintCircleColor" format="color|reference" />
+        <!-- slide bar　选中时候提示背景形状 -->
+        <attr name="hintShape" format="enum">
+            <enum name="circle" value="0" />
+            <enum name="rectangle" value="1" />
+        </attr>
+        <!-- slide bar　选中时候波浪颜色 -->
+        <attr name="waveColor" format="color|reference" />
+        <!-- slide bar　选中时候波浪半径 -->
+        <attr name="waveRadius" format="dimension" />
+        <!-- slide bar　里面文字上＋下padding -->
+        <attr name="contentPadding" format="dimension" />
+        <!-- slide bar　上+下+右padding -->
+        <attr name="barPadding" format="dimension" />
+        <!-- slide bar　宽度 -->
+        <attr name="barWidth" format="dimension" />
+    </declare-styleable>
+
+
+    <string name="srl_footer_failed">Load Failed</string>
+    <string name="srl_footer_finish">Load Success</string>
+    <string name="srl_footer_loading">Loading…</string>
+    <string name="srl_footer_nothing">No More Data</string>
+    <string name="srl_footer_pulling">Pull Up To Load More</string>
+    <string name="srl_footer_refreshing">Wait For Refreshing…</string>
+    <string name="srl_footer_release">Release To Load More</string>
+    <declare-styleable name="FooterView">
+        <attr name="srlClassicsSpinnerStyle" />
+        <attr name="srlPrimaryColor" />
+        <attr name="srlAccentColor" />
+        <attr name="srlFinishDuration" />
+        <attr name="srlTextSizeTitle" />
+        <attr name="srlDrawableArrow" />
+        <attr name="srlDrawableProgress" />
+        <attr name="srlDrawableMarginRight" />
+        <attr name="srlDrawableSize" />
+        <attr name="srlDrawableArrowSize" />
+        <attr name="srlDrawableProgressSize" />
+
+        <attr name="srlTextPulling" />
+        <attr name="srlTextRelease" />
+        <attr name="srlTextLoading" />
+        <attr name="srlTextRefreshing" />
+        <attr name="srlTextFinish" />
+        <attr name="srlTextFailed" />
+        <attr name="srlTextNothing" />
+
+    </declare-styleable>
+
+</resources>

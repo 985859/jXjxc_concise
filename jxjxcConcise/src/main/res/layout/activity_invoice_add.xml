@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="money"
+            type="String" />
+
+        <variable
+            name="memo"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.InvoiceAddActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/invoiceAdd_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_Title="@string/invoice_add" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/invoiceAdd_Pic"
+                        layout="@layout/layout_add_pic"
+                        app:maxPic="@{1}"
+                        app:title="@{@string/invoice_pic}" />
+                </LinearLayout>
+
+                <com.yiande.jxjxc.view.PriceView
+                    style="@style/LayoutStyle"
+                    android:hint="@string/invoice_amount_hint"
+                    app:setEditText="@={money}"
+                    app:title="@string/invoice_amount" />
+
+
+                <com.yiande.jxjxc.view.EditLengthView
+                    style="@style/LayoutStyle"
+                    android:hint="@string/memo_hint"
+                    android:maxLength="300"
+                    app:setEditText="@={memo}"
+                    app:title="@string/memo" />
+
+
+                <Button
+                    android:id="@+id/invoiceAdd_BT"
+                    style="@style/buttonStyle"
+                    android:layout_marginTop="60dp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

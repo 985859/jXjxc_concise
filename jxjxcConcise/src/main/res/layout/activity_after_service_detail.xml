@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.AfterServiceInfoBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.AfterServiceAddActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/afterServiceDetail_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_Title="@string/after_service_detail2" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
+
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <LinearLayout
+                        style="@style/ViewStyle"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/after_service_type"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/text_Size3" />
+
+                        <com.mylibrary.api.widget.VariedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:gravity="center"
+                            android:paddingStart="@dimen/margin3"
+                            android:paddingTop="2dp"
+                            android:paddingEnd="@dimen/margin3"
+                            android:paddingBottom="2dp"
+                            android:text="@string/maintain"
+                            android:textColor="@color/white"
+                            app:attr_background="@color/red"
+                            app:attr_cornersRaius="@dimen/radius3" />
+                    </LinearLayout>
+
+                    <com.yiande.jxjxc.view.ItemTextView
+                        style="@style/ViewStyle"
+                        android:text="@{data.comName}"
+                        app:title="@string/client" />
+
+
+                    <LinearLayout
+                        style="@style/ViewStyle"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/after_service_product"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/text_Size3"
+                            app:layout_constraintBottom_toBottomOf="@+id/afterServiceDetail_AddProduct"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/afterServiceDetail_AddProduct" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/afterServiceDetail_ProductRec"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="6dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/afterServiceDetail_AddProduct" />
+
+
+                    </LinearLayout>
+
+
+                    <com.yiande.jxjxc.view.ItemTextView
+                        style="@style/ViewStyle"
+                        android:text="@{data.adminName}"
+                        app:title="@string/maintain_employee" />
+
+
+                    <com.yiande.jxjxc.view.ItemTextView
+                        style="@style/ViewStyle"
+                        android:text="@{data.begin}"
+                        app:title="@string/maintain_date" />
+
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/afterServiceDetail_OtherAmount"
+                        style="@style/ViewStyle"
+                        app:priceView_Edit="false"
+                        app:setEditText='@{StringUtil.isEmpty(data.other)?"0":data.other}'
+                        app:title="@string/other_amount" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/afterServiceDetail_ChargeFees"
+                        style="@style/ViewStyle"
+                        app:priceView_Edit="false"
+                        app:setEditText='@{StringUtil.isEmpty(data.charge)?"0":data.charge}'
+                        app:title="@string/charge_fees" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin3"
+                    android:layout_marginTop="@dimen/margin3"
+                    android:layout_marginEnd="@dimen/margin3"
+                    android:orientation="horizontal">
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/afterServiceDetail_MaintainMoney"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_white_br_20"
+                        android:padding="@dimen/padding3"
+                        app:priceView_Edit="false"
+                        app:priceView_IconSize="16dp"
+                        app:priceView_ShowLine="true"
+                        app:setEditText='@{StringUtil.isEmpty(data.productMoney)?"0":data.productMoney}'
+                        app:title="@string/maintain_product_money" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/afterServiceDetail_MaintainAmount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_white_bl_20"
+                        android:padding="@dimen/padding3"
+                        app:priceView_Edit="false"
+                        app:priceView_IconSize="16dp"
+                        app:priceView_ShowLine="true"
+                        app:setEditText='@{StringUtil.isEmpty(data.money)?"0":data.money}'
+                        app:title="@string/maintain_amount2" />
+                </LinearLayout>
+
+                <com.yiande.jxjxc.view.PriceView
+                    android:id="@+id/afterServiceDetail_MaintainProfit"
+                    style="@style/LayoutStyle"
+                    app:priceView_AddFilter="false"
+                    app:priceView_Edit="false"
+                    app:priceView_IconSize="16dp"
+                    app:priceView_ShowLine="true"
+                    app:setEditText='@{StringUtil.isEmpty(data.profit)?"0":data.profit}'
+                    app:title="@string/maintain_profit" />
+
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:visibility="@{Util.isListEmpty(data.picList)&amp;&amp;StringUtil.isEmpty(data.content)?View.GONE:View.VISIBLE}"
+                    android:showDividers="middle">
+
+                    <include
+                        android:id="@+id/afterServiceDetail_Pic"
+                        layout="@layout/layout_rec"
+                        android:visibility="@{Util.isListEmpty(data.picList)?View.GONE:View.VISIBLE}"
+                        app:title="@{@string/after_service_pic}" />
+
+                    <com.yiande.jxjxc.view.TypeView
+                        android:id="@+id/afterServiceDetail_Detail"
+                        style="@style/ViewStyle"
+                        android:visibility="@{StringUtil.isEmpty(data.content)?View.GONE:View.VISIBLE}"
+                       app:setText="@{StringUtil.removeHtmlTag(data.content)}"
+                        android:hint="@string/after_service_detail_hint2"
+                        app:title="@string/after_service_detail" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

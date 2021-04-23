@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.UserAddressBean" />
+
+        <variable
+            name="type"
+            type="Integer" />
+    </data>
+
+
+    <LinearLayout
+        android:id="@+id/popLogistics_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_white_top_20"
+            android:orientation="vertical">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/topHight">
+
+                <TextView
+                    android:id="@+id/popLogistics_Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="添加"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/text_Size3" />
+
+                <ImageView
+                    android:id="@+id/popLogistics_Close"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:onClick="@{()->onClick.accept(0)}"
+                    android:padding="13dp"
+                    android:src="@drawable/close_g" />
+
+            </FrameLayout>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/popLogistics_City"
+                style="@style/editStyle"
+                android:hint="请输入目的地"
+                android:singleLine="true"
+                android:text="@={data.userAddress_City}" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/popLogistics_ComName"
+                style="@style/editStyle"
+                android:hint="请输入物流公司"
+                android:singleLine="true"
+                android:text="@={data.userAddress_ComName}" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/popLogistics_Tel"
+                style="@style/editStyle"
+                android:hint="请输入电话"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:text="@={data.userAddress_Tel}" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/popLogistics_Text"
+                style="@style/editStyle2"
+                android:layout_height="120dp"
+                android:layout_marginBottom="10dp"
+                android:hint="请输入添加内容"
+                android:text="@={data.userAddress_Address}" />
+
+            <Button
+                android:id="@+id/popLogistics_Confirm"
+                style="@style/buttonStyle"
+                android:onClick="@{()->onClick.accept(1)}"
+                android:text="@string/computer_post"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

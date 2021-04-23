@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="type"
+            type="Integer" />
+
+
+        <variable
+            name="text"
+            type="String" />
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/setIP_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_Title="设置IP地址" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <com.yiande.jxjxc.view.OrderTypeView
+                    android:id="@+id/setIP_Type"
+                    style="@style/LayoutStyle"
+                    app:title="网络设置"
+                    app:type_color1="@color/blue"
+                    app:type_color2="@color/gray"
+                    app:type_text1="公司内网"
+                    app:type_text2="互联网" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/LayoutStyle"
+                    android:visibility="@{type==0?View.VISIBLE:View.GONE}">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="局域网IP地址"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_Size3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.mylibrary.api.widget.VariedTextView
+                        android:id="@+id/setIP_select"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{()->onClick.accept(3)}"
+                        android:paddingStart="@dimen/padding3"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="@dimen/padding3"
+                        android:paddingBottom="3dp"
+                        android:text="点击搜索本地IP"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_Size2"
+                        app:attr_background="@color/blue"
+                        app:attr_cornersRaius="@dimen/radius3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/setIP_Layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin3"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/setIP_select">
+
+                        <EditText
+                            android:id="@+id/setIP_E1"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_bg2_20"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:text="192"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/text_Size3" />
+
+                        <TextView
+                            android:layout_width="16dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="."
+                            android:textColor="@color/gray4"
+                            android:textSize="20sp" />
+
+                        <EditText
+                            android:id="@+id/setIP_E2"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_bg2_20"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:text="168"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/text_Size3" />
+
+                        <TextView
+                            android:layout_width="16dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="."
+                            android:textColor="@color/gray4"
+                            android:textSize="20sp" />
+
+                        <EditText
+                            android:id="@+id/setIP_E3"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_bg2_20"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:text=""
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/text_Size3" />
+
+                        <TextView
+                            android:layout_width="16dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="."
+                            android:textColor="@color/gray4"
+                            android:textSize="20sp" />
+
+                        <EditText
+                            android:id="@+id/setIP_E4"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_bg2_20"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:text=""
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/text_Size3" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/setIP_PortText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="端口设置"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_Size3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/setIP_Layout" />
+
+                    <TextView
+                        android:id="@+id/setIP_PortText2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="10dp"
+                        android:text="端口默认80,若有变动请点击修改"
+                        android:textColor="@color/gray3"
+                        android:textSize="@dimen/text_Size3"
+                        app:layout_constraintStart_toEndOf="@+id/setIP_PortText"
+                        app:layout_constraintTop_toBottomOf="@+id/setIP_Layout" />
+
+                    <EditText
+                        android:id="@+id/setIP_Port"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="6dp"
+                        android:background="@null"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:text="80"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/text_Size3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/setIP_PortText" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:orientation="vertical"
+                    android:visibility="@{type==1?View.VISIBLE:View.GONE}">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="互联网地址"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/text_Size3"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="输入url后建机管家即可云端访问"
+                            android:textColor="@color/gray3"
+                            android:textSize="@dimen/text_Size2"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin3"
+                        android:orientation="horizontal">
+
+                        <com.mylibrary.api.widget.MySpinnerView
+                            android:id="@+id/setIP_Spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="4dp"
+                            android:visibility="visible"
+                            app:Spinner_checkIcon="@drawable/down_up"
+                            app:Spinner_checkTextColor="@color/textColor"
+                            app:Spinner_showFull="false"
+                            app:Spinner_text="http://"
+                            app:Spinner_textColor="@color/textColor"
+                            app:Spinner_textSize="@dimen/text_Size2" />
+
+                        <EditText
+                            android:id="@+id/setIP_EUrl"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_weight="1"
+                            android:background="@color/white"
+                            android:hint="@string/hint_url"
+                            android:inputType="textUri"
+                            android:paddingStart="4dp"
+                            android:paddingEnd="14dp"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/text_Size3" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/setIP_BT"
+                    style="@style/buttonStyle"
+                    android:layout_marginTop="30dp"
+                    android:onClick="@{()->onClick.accept(2)}"
+                    android:text="保存" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+</layout>

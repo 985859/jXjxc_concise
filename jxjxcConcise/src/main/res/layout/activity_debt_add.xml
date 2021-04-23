@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <!--1欠款 2 赊账 -->
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="money"
+            type="String" />
+
+        <variable
+            name="memo"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/debtAdd_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:setToptTilte="@{type==2?@string/on_creditTitle:@string/debt_addTitle}" />
+
+
+        <include layout="@layout/layout_must" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:layout_marginBottom="20dp"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <LinearLayout
+                        style="@style/ViewStyle"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/type"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/text_Size3" />
+
+                        <com.mylibrary.api.widget.VariedTextView
+                            android:layout_width="120dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="6dp"
+                            android:gravity="center"
+                            android:text="@{type==2?@string/on_credit:@string/debt}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_Size3"
+                            app:attr_background="@color/red"
+                            app:attr_cornersRaius="@dimen/radius3" />
+
+                    </LinearLayout>
+
+                    <com.yiande.jxjxc.view.ItemTextView
+                        style="@style/ViewStyle"
+                        app:setText="@{name}"
+                        app:title="@{type==2?@string/supplier:@string/client}" />
+
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/debtAdd_Money"
+                        style="@style/ViewStyle"
+                        android:hint="@{type==2?@string/on_creditAmount_hint:@string/debt_Amount_hint}"
+                        app:priceView_ShowLine="false"
+                        app:setEditText="@={money}"
+                        app:must="1"
+                        app:title="@{type==2?@string/on_creditAmount:@string/debt_Amount}" />
+
+
+                    <com.yiande.jxjxc.view.EditLengthView
+                        style="@style/ViewStyle"
+                        android:hint="@string/memo_hint"
+                        android:maxLength="300"
+                        app:setEditText="@={memo}"
+                        app:title="@string/memo" />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/debtAdd_BT"
+                    style="@style/buttonStyle"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_Size3" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

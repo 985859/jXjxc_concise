@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="index"
+            type="String" />
+
+        <variable
+            name="showMore"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.OrderProAddBean" />
+
+
+        <variable
+            name="orderType"
+            type="Integer" />
+
+        <variable
+            name="isKg"
+            type="Boolean" />
+
+        <import type="android.view.View" />
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:gravity="bottom"
+                app:item_leftTextColor="@color/contentColor"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/itmOrderPro_More"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setItemLeftText="@{String.format(@string/index,index)}" />
+
+
+            <ImageView
+                android:id="@+id/itmOrderPro_More"
+                android:layout_width="30dp"
+                android:layout_height="22dp"
+                android:gravity="center"
+                android:paddingEnd="8dp"
+                android:src="@drawable/more"
+                android:visibility="@{showMore?View.VISIBLE:View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.mylibrary.api.widget.VariedConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="10dp"
+            android:background="@drawable/layout_background_8"
+       >
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro_Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:item_leftText="@string/product_Name"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setRightText="@{data.OrderDetail_Product_Title}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro_Model"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                app:item_leftText="@string/product_Size"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/itmOrderPro_Number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro_Title"
+                app:setRightText="@{data.OrderDetail_Product_Model}" />
+
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro_Number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:item_leftText="@string/number"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itmOrderPro_Model"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro_Title"
+                app:setRightText="@{String.valueOf(data.orderDetail_Quantity)}" />
+
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro_Kg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                android:visibility="@{isKg&amp;&amp;orderType==1?View.VISIBLE:View.GONE}"
+                app:item_leftText="@string/weight"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/itmOrderPro_AmountKg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro_Model"
+                app:setRightText="@{Util.setKg(data.orderDetail_Kg)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro_AmountKg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:visibility="@{isKg&amp;&amp;orderType==1?View.VISIBLE:View.GONE}"
+                app:item_leftText="@string/kg_amunt2"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itmOrderPro_Kg"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro_Model"
+                app:setRightText="@{Util.setKg(data.orderDetail_KgAmount)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro_Price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                app:item_leftText="@string/unit_price"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="9dp"
+                app:layout_constraintEnd_toStartOf="@+id/itmOrderPro_Amount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro_Kg"
+                app:setRightText="@{Util.setPriceRed(data.orderDetail_Price)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro_Amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:item_leftText="@string/subtotal"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="46dp"
+                app:item_rightTextPadding="9dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itmOrderPro_Price"
+                app:layout_constraintTop_toTopOf="@+id/itmOrderPro_Price"
+                app:setRightText="@{Util.setPriceRed(data.orderDetail_Amount)}" />
+
+
+        </com.mylibrary.api.widget.VariedConstraintLayout>
+
+    </LinearLayout>
+</layout>

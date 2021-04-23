@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/edit_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/text_Size3" />
+
+
+        <com.mylibrary.api.widget.ClearEditText
+            android:id="@+id/edit_Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@null"
+            android:ellipsize="start"
+            android:paddingStart="6dp"
+            android:singleLine="true"
+            android:textSize="@dimen/text_Size3"
+            app:ced_Size_clear="16dp"
+            app:ced_clear_Icon="@drawable/clear"
+            app:ced_interval="8dp" />
+    </LinearLayout>
+</layout>

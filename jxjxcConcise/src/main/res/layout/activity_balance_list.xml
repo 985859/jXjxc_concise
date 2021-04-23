@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <!-- 1欠款 2赊账 -->
+        <variable
+            name="type"
+            type="Integer" />
+
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        tools:context=".activity.ProductListActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/balanceList_V2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/balanceList_Layout"
+                app:layout_constraintStart_toStartOf="@+id/balanceList_Layout" />
+
+            <com.mylibrary.api.widget.VariedLinearLayout
+                android:id="@+id/balanceList_TimeLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="4dp"
+                android:paddingTop="38dp"
+                android:paddingBottom="2dp"
+                android:visibility="gone"
+                app:attr_background="@color/edit_color2"
+                app:attr_bottomLeftRadius="@dimen/radius2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/balanceList_V2">
+
+
+                <com.mylibrary.api.widget.VariedTextView
+                    android:id="@+id/balanceList_BeginTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/down_up"
+                    android:drawablePadding="4dp"
+                    android:gravity="center"
+                    android:onClick="@{()->onClick.accept(1)}"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/begin_time"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/text_Size2"
+                    app:attr_drawableRightHeight="8dp"
+                    app:attr_drawableRightWidth="6dp" />
+
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="至"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/text_Size2" />
+
+                <com.mylibrary.api.widget.VariedTextView
+                    android:id="@+id/balanceList_EndTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/down_up"
+                    android:drawablePadding="4dp"
+                    android:gravity="center"
+                    android:onClick="@{()->onClick.accept(2)}"
+                    android:paddingStart="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/end_time"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/text_Size2"
+                    app:attr_drawableRightHeight="8dp"
+                    app:attr_drawableRightWidth="6dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:onClick="@{()->onClick.accept(3)}"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="全部日期"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/text_Size2" />
+            </com.mylibrary.api.widget.VariedLinearLayout>
+
+            <View
+                android:id="@+id/balanceList_V1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/balanceList_Top"
+                app:layout_constraintStart_toStartOf="@+id/balanceList_Top" />
+
+            <com.mylibrary.api.widget.VariedLinearLayout
+                android:id="@+id/balanceList_Layout"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal"
+                android:paddingTop="30dp"
+                app:attr_background="@color/white"
+                app:attr_bottomLeftRadius="@dimen/radius2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/balanceList_V1">
+
+
+                <com.mylibrary.api.widget.MySpinnerView
+                    android:id="@+id/balanceList_Type"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    app:Spinner_checkIcon="@drawable/down_blue"
+                    app:Spinner_checkTextColor="@color/blue"
+                    app:Spinner_text="全部状态" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <com.mylibrary.api.widget.VariedTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableRight="@drawable/down_up"
+                        android:drawablePadding="4dp"
+                        android:gravity="center"
+                        android:onClick="@{()->onClick.accept(0)}"
+                        android:text="时间筛选"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/text_Size2"
+                        app:attr_drawableRightHeight="8dp"
+                        app:attr_drawableRightWidth="6dp" />
+                </LinearLayout>
+            </com.mylibrary.api.widget.VariedLinearLayout>
+
+
+            <com.mylibrary.api.widget.TopView
+                android:id="@+id/balanceList_Top"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/topHight"
+                android:background="@drawable/top_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/balanceList_Refresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/balanceList_Rec"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin2"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="@dimen/margin2"
+                android:layout_marginBottom="6dp" />
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+
+    </LinearLayout>
+</layout>

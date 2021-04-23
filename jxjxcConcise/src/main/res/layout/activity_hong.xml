@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <!-- 0 出库单  1 入库单-->
+        <variable
+            name="type"
+            type="Integer"></variable>
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.OrderInfoBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.HongActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/hong_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:setToptTilte="@{type==0?@string/hong_title0:@string/hong_title1}" />
+
+
+        <LinearLayout
+            style="@style/LayoutStyle"
+            android:orientation="vertical">
+
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                app:gravity="center_vertical"
+                app:item_leftText="@string/no"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="60dp"
+                app:item_leftTextSize="@dimen/text_Size3"
+                app:item_rightTextColor="@color/textColor"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size2"
+                app:setRightText="@{data.order_No}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:gravity="center_vertical"
+                app:item_leftText="@string/add_time"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="60dp"
+                app:item_leftTextSize="@dimen/text_Size3"
+                app:item_rightTextColor="@color/textColor"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size2"
+                app:setRightText="@{data.order_AddDate}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="50dp"
+                    android:text="@{type==0?@string/stock_out_type:@string/stock_in_type}"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/text_Size3" />
+
+                <com.mylibrary.api.widget.VariedTextView
+                    android:id="@+id/hong_Type"
+                    android:layout_width="80dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_Size2"
+                    app:attr_cornersRaius="20dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <com.yiande.jxjxc.view.EditLengthView
+            android:id="@+id/hong_Memo"
+            style="@style/LayoutStyle"
+            android:hint="@string/hint_hong"
+            android:maxLength="300"
+            app:title="红冲原因" />
+
+
+        <Button
+            android:id="@+id/hong_BT"
+            style="@style/buttonStyle" />
+
+
+    </LinearLayout>
+</layout>

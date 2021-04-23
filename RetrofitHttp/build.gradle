@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.greenrobot.greendao'
+android {
+    compileSdkVersion  rootProject.ext.compileSdkVersion
+    buildToolsVersion  rootProject.ext.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+greendao {
+    schemaVersion 1 //数据库版本
+    targetGenDir 'src/main/java' //指定生成代码的目录
+    daoPackage //生成代码到具体包下
+}
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    api  'org.greenrobot:greendao:3.3.0' // 添加库
+
+
+    api 'com.squareup.retrofit2:retrofit:2.9.0' // 必要retrofit依赖
+    api 'com.squareup.retrofit2:adapter-rxjava3:2.9.0' // 必要依赖，和Rxjava结合必须用到，下面会提到
+    api 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    api 'com.trello.rxlifecycle4:rxlifecycle:4.0.2'    // 绑定到特定于android的生命周期
+    api 'com.trello.rxlifecycle4:rxlifecycle-android:4.0.2'// 如果你想要预先编写的Activities和Fragments，你可以子类化为提供者
+    api 'com.trello.rxlifecycle4:rxlifecycle-components:4.0.2'
+    api 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+
+
+
+}

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.AdminBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.AdminAddActivity">
+
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/adminAdd_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_Title="@string/admin_add" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/layout_must" />
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <com.mylibrary.api.widget.EditView
+                        style="@style/ViewStyle"
+                        app:edit_Hint="@string/admin_name_hint"
+                        app:edit_Must="1"
+                        app:edit_Text="@={data.admin_Name}"
+                        app:edit_Title="@string/admin_name" />
+
+                    <com.mylibrary.api.widget.EditView
+                        style="@style/ViewStyle"
+                        android:inputType="phone"
+                        android:maxLength="11"
+                        app:edit_Hint="@string/admin_tel_hint"
+                        app:edit_Must="1"
+                        app:edit_Text="@={data.admin_Mob}"
+                        app:edit_Title="@string/linkMan_Tel" />
+
+                </LinearLayout>
+
+
+                <com.yiande.jxjxc.view.OrderTypeView
+                    android:id="@+id/adminAdd_Type"
+                    style="@style/LayoutStyle"
+                    app:title="@string/admin_type"
+                    app:type="@{data.admin_Type==1?1:0}"
+                    app:type_color1="@color/blue"
+                    app:type_color2="@color/gray"
+                    app:type_text1="@string/admin_type1"
+                    app:type_text2="@string/admin_type2" />
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:showDividers="middle"
+                    android:visibility="@{data.admin_Type==1?View.VISIBLE:View.GONE}">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{Util.setMustTilte(@string/admin_password)}"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/text_Size3" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hintEnabled="false"
+                            app:passwordToggleEnabled="true">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/adminAdd_Password"
+                                android:layout_width="match_parent"
+                                android:layout_height="26dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:background="@null"
+                                android:hint="@string/admin_password_hint"
+                                android:inputType="textPassword"
+                                android:singleLine="true"
+                                android:text="@={data.admin_Password}"
+                                android:textColor="@color/textColor"
+                                android:textSize="@dimen/text_Size3" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@{Util.setMustTilte(@string/admin_password2)}"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/text_Size3" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hintEnabled="false"
+                            app:passwordToggleEnabled="true">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/adminAdd_Password2"
+                                android:layout_width="match_parent"
+                                android:layout_height="26dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:background="@null"
+                                android:hint="@string/admin_password2_hint"
+                                android:inputType="textPassword"
+                                android:singleLine="true"
+                                android:text="@={data.admin_Password2}"
+                                android:textColor="@color/textColor"
+                                android:textSize="@dimen/text_Size3" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:showDividers="middle"
+                    android:visibility="@{data.admin_Type==1?View.VISIBLE:View.GONE}">
+
+                    <TextView
+                        style="@style/ViewStyle"
+                        android:text="权限"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_Size3" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/adminAdd_Rec"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp" />
+
+                </LinearLayout>
+
+                <com.yiande.jxjxc.view.OrderTypeView
+                    android:id="@+id/adminAdd_State"
+                    style="@style/LayoutStyle"
+                    app:title="@string/state"
+                    app:type="@{data.admin_IsOK==0?1:0}"
+                    app:type_color1="@color/blue"
+                    app:type_color2="@color/gray"
+                    app:type_text1="@string/enable"
+                    app:type_text2="@string/disable" />
+
+
+                <Button
+                    android:id="@+id/adminAdd_BT"
+                    style="@style/buttonStyle"
+                    android:text="@string/computer_post" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+</layout>

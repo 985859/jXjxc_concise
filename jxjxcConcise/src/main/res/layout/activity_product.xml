@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.ProductBean" />
+
+        <variable
+            name="isAdd"
+            type="Boolean" />
+
+        <variable
+            name="level"
+            type="Integer" />
+
+        <variable
+            name="isKg"
+            type="Boolean" />
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.ProductActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/product_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_Title="@string/product_add" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/layout_must" />
+
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <com.yiande.jxjxc.view.EditItemView
+                        style="@style/ViewStyle"
+                        android:hint="@string/product_hint_name"
+                        app:must="1"
+                        app:setEditText="@={data.product_Title}"
+                        app:title="@string/product_Name" />
+
+                    <com.yiande.jxjxc.view.EditItemView
+                        style="@style/ViewStyle"
+                        android:hint="@string/prodct_hint_size"
+                        app:must="1"
+                        app:setEditText="@={data.product_Model}"
+                        app:title="@string/product_Size" />
+
+                    <com.yiande.jxjxc.view.OrderTypeView
+                        android:id="@+id/producut_State"
+                        style="@style/ViewStyle"
+                        app:title="@string/product_state"
+                        app:type_color1="@color/blue"
+                        app:type_color2="@color/gray"
+                        app:type_text1="@string/enable"
+                        app:type_text2="@string/disable" />
+
+                    <com.yiande.jxjxc.view.TypeView
+                        android:id="@+id/producut_Class"
+                        style="@style/ViewStyle"
+                        android:hint="@string/product_class_select"
+                        app:title="@string/product_class"
+                        android:text="@{data.className}"
+                        app:typeView_addText="@string/product_class_add" />
+
+                    <com.yiande.jxjxc.view.TypeView
+                        android:id="@+id/producut_Brand"
+                        style="@style/ViewStyle"
+                        android:hint="@string/product_brand_select"
+                        app:title="@string/product_brand"
+                        android:text="@{data.product_Brand_Name}"
+                        app:typeView_addText="@string/product_brand_add" />
+
+
+                    <include
+                        android:id="@+id/productAddPic"
+                        layout="@layout/layout_add_pic"
+                        app:maxPic="@{5}"
+                        app:title="@{@string/product_pic}" />
+
+                    <com.yiande.jxjxc.view.TypeView
+                        android:id="@+id/producut_Unit"
+                        style="@style/ViewStyle"
+                        android:hint="@string/product_unit_select"
+                        app:title="@string/product_unit"
+                        android:text="@{data.product_Unit_Name}"
+                        app:typeView_addText="@string/product_unit_add" />
+
+                    <com.yiande.jxjxc.view.EditItemView
+                        android:id="@+id/product_Kg"
+                        style="@style/ViewStyle"
+                        android:hint="@string/product_Kg_hint"
+                        android:inputType="numberDecimal"
+                        android:visibility="@{isKg?View.VISIBLE:View.GONE}"
+                        app:setEditText="@={data.product_Kg}"
+                        app:title="@string/product_kg" />
+
+                    <com.yiande.jxjxc.view.EditItemView
+                        style="@style/ViewStyle"
+                        android:hint="@string/product_hint_Inventorywarn"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        app:setEditText="@={data.product_InventoryWarningNum}"
+                        app:title="@string/product_inventory_warn" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <com.yiande.jxjxc.view.PriceView
+                        style="@style/ViewStyle"
+                        android:hint="@string/product_purchasePrice_hint"
+                        app:must="1"
+                        app:setEditText="@={data.product_BuyPrice}"
+                        app:subTitle="@string/product_purchase_price2"
+                        app:title="@string/product_purchase_price" />
+
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/product_Price"
+                        style="@style/ViewStyle"
+                        app:must="1"
+                        app:priceView_Icon="@drawable/v0"
+                        app:priceView_IconSize="16dp"
+                        app:setEditText="@={data.product_Price}"
+                        app:setHint="@{String.format(@string/product_Price_hint,@string/common)}"
+                        app:subTitle="@{String.format(@string/product_Price2,@string/common)}"
+                        app:title="@string/product_Price" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/product_V1"
+                        style="@style/ViewStyle"
+                        android:visibility="@{level>=1?View.VISIBLE:View.GONE}"
+                        app:priceView_Icon="@drawable/v1"
+                        app:priceView_IconSize="16dp"
+                        app:setEditText="@={data.product_Vip1_Price}"
+                        app:setHint="@{String.format(@string/product_Price_hint,@string/v1)}"
+                        app:subTitle="@{String.format(@string/product_Price2,@string/v1)}"
+                        app:title="@string/product_sell_preice" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/product_V2"
+                        style="@style/ViewStyle"
+                        android:visibility="@{level>=2?View.VISIBLE:View.GONE}"
+                        app:priceView_Icon="@drawable/v2"
+                        app:priceView_IconSize="16dp"
+                        app:setEditText="@={data.product_Vip2_Price}"
+                        app:setHint="@{String.format(@string/product_Price_hint,@string/v2)}"
+                        app:subTitle="@{String.format(@string/product_Price2,@string/v2)}"
+                        app:title="@string/product_sell_preice" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/product_V3"
+                        style="@style/ViewStyle"
+                        android:visibility="@{level>=3?View.VISIBLE:View.GONE}"
+                        app:priceView_Icon="@drawable/v3"
+                        app:priceView_IconSize="16dp"
+                        app:setEditText="@={data.product_Vip3_Price}"
+                        app:setHint="@{String.format(@string/product_Price_hint,@string/v3)}"
+                        app:subTitle="@{String.format(@string/product_Price2,@string/v3)}"
+                        app:title="@string/product_sell_preice" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/product_V4"
+                        style="@style/ViewStyle"
+                        android:visibility="@{level>=4?View.VISIBLE:View.GONE}"
+                        app:priceView_Icon="@drawable/v4"
+                        app:priceView_IconSize="16dp"
+                        app:setEditText="@={data.product_Vip4_Price}"
+                        app:setHint="@{String.format(@string/product_Price_hint,@string/v4)}"
+                        app:subTitle="@{String.format(@string/product_Price2,@string/v4)}"
+                        app:title="@string/product_sell_preice" />
+                </LinearLayout>
+
+
+                <com.yiande.jxjxc.view.EditLengthView
+                    style="@style/LayoutStyle"
+                    android:hint="@string/product_exlain_hint"
+                    app:setEditText="@={data.product_Memo}"
+                    app:title="@string/product_explain" />
+
+                <Button
+                    android:id="@+id/producut_BT"
+                    style="@style/buttonStyle"
+                    android:layout_marginBottom="20dp"
+                    android:onClick="@{()->onClick.accept(6)}"
+                    android:text="@string/computer_post" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+</layout>

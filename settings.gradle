@@ -1,0 +1,6 @@
+include ':UILibrary'
+include ':richeditor'
+include ':picker_layoutmanager'
+include ':RetrofitHttp'
+include ':jxjxcConcise'
+rootProject.name = "jXjxc_concise"

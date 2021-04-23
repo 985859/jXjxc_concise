@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="index"
+            type="String" />
+
+        <variable
+            name="showMore"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.OrderProAddBean" />
+
+
+        <variable
+            name="orderType"
+            type="Integer" />
+
+        <variable
+            name="isKg"
+            type="Boolean" />
+
+        <import type="android.view.View" />
+
+        <import type="com.yiande.jxjxc.utils.Util" />
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.mylibrary.api.widget.ItemView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:gravity="bottom"
+                app:item_leftTextColor="@color/contentColor"
+                app:item_rightText="(反审核)"
+                app:item_rightTextColor="@color/red"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/itmOrderPro1_More"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setItemLeftText="@{String.format(@string/index,index)}" />
+
+
+            <ImageView
+                android:id="@+id/itmOrderPro1_More"
+                android:layout_width="30dp"
+                android:layout_height="22dp"
+                android:gravity="center"
+                android:paddingEnd="8dp"
+                android:src="@drawable/more"
+                android:visibility="@{showMore?View.VISIBLE:View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.mylibrary.api.widget.VariedConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+
+            android:padding="10dp"
+            app:attr_background="@color/red2"
+            app:attr_cornersRaius="8dp">
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro1_Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:item_leftText="@string/product_Name"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="56dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setRightText="@{data.OrderDetail_Product_Title}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro1_Model"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:item_leftText="@string/product_Size"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="56dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro1_Title"
+                app:setRightText="@{data.OrderDetail_Product_Model}" />
+
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro1_OriginalNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="8dp"
+                app:item_leftText="@string/number_original"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="56dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/itmOrderPro1_Number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro1_Model"
+                app:setRightText="@{String.valueOf(data.orderDetail_Quantity)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro1_Number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+
+                app:item_leftText="@string/number"
+                app:item_leftTextColor="@color/red"
+                app:item_leftTextMinWidth="56dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itmOrderPro1_OriginalNumber"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro1_Model"
+                app:setRightText="@{String.valueOf(data.orderDetail_Edit_Quantity)}" />
+
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro1_OriginalKg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="8dp"
+                android:visibility="@{isKg&amp;&amp;orderType==1?View.VISIBLE:View.GONE}"
+                app:item_leftText="@string/weight_original"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="56dp"
+                app:item_rightTextPadding="6dp"
+                app:layout_constraintEnd_toStartOf="@+id/itmOrderPro1_Kg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro1_OriginalNumber"
+                app:setRightText="@{String.valueOf(data.orderDetail_Kg)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro1_Kg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:visibility="@{isKg&amp;&amp;orderType==1?View.VISIBLE:View.GONE}"
+                app:item_leftText="@string/weight"
+                app:item_leftTextColor="@color/red"
+                app:item_leftTextMinWidth="56dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itmOrderPro1_OriginalKg"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro1_OriginalNumber"
+                app:setRightText="@{String.valueOf(data.orderDetail_Edit_Kg)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro1_OriginalKgAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="8dp"
+                android:visibility="@{isKg&amp;&amp;orderType==1?View.VISIBLE:View.GONE}"
+                app:item_leftText="@string/kg_amunt2_original"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="56dp"
+                app:item_rightTextPadding="2dp"
+                app:layout_constraintEnd_toStartOf="@+id/itmOrderPro1_KgAmount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro1_OriginalKg"
+                app:setRightText="@{String.valueOf(data.orderDetail_Kg)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro1_KgAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:visibility="@{isKg&amp;&amp;orderType==1?View.VISIBLE:View.GONE}"
+                app:item_leftText="@string/kg_amunt2"
+                app:item_leftTextColor="@color/red"
+                app:item_leftTextMinWidth="56dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itmOrderPro1_OriginalKgAmount"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro1_OriginalKg"
+                app:setRightText="@{String.valueOf(data.orderDetail_Edit_Kg)}" />
+
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro1_OriginalPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="8dp"
+                app:item_leftText="@string/unit_price_original"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="56dp"
+                app:item_rightTextPadding="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/itmOrderPro1_Price"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro1_OriginalKgAmount"
+                app:setRightText="@{Util.setPriceRed(data.orderDetail_Price)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro1_Price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:item_leftText="@string/unit_price"
+                app:item_leftTextColor="@color/red"
+                app:item_leftTextMinWidth="56dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itmOrderPro1_OriginalPrice"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro1_OriginalKgAmount"
+                app:setRightText="@{Util.setPriceRed(data.orderDetail_Edit_Price)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro1_OriginalAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="8dp"
+                app:item_leftText="@string/subtotal_original"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="56dp"
+                app:item_rightTextPadding="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/itmOrderPro1_Amount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro1_OriginalPrice"
+                app:setRightText="@{Util.setPriceRed(data.orderDetail_Price)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro1_Amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:item_leftText="@string/subtotal"
+                app:item_leftTextColor="@color/red"
+                app:item_leftTextMinWidth="56dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itmOrderPro1_OriginalAmount"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro1_OriginalPrice"
+                app:setRightText="@{Util.setPriceRed(data.orderDetail_Edit_Price)}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/itmOrderPro1_Memo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="8dp"
+                android:visibility="@{StringUtil.isEmpty(data.orderDetail_EditMemo)?View.GONE:View.VISIBLE}"
+                app:item_leftText="@string/memo"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="56dp"
+                app:item_rightTextPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itmOrderPro1_Amount"
+                app:setRightText="@{data.orderDetail_EditMemo}" />
+
+
+        </com.mylibrary.api.widget.VariedConstraintLayout>
+
+    </LinearLayout>
+</layout>

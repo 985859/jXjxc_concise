@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.AdminListBean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:background="@drawable/layout_white_20">
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmAdmin_Name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            app:item_leftText="@string/LinkMan"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextSize="@dimen/text_Size3"
+            app:item_rightText=""
+            app:item_rightTextPadding="6dp"
+            app:item_rightTextSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/itmAdmin_More"
+            app:layout_constraintEnd_toStartOf="@+id/itmAdmin_More"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/itmAdmin_More" />
+
+
+        <ImageView
+            android:id="@+id/itmAdmin_More"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:padding="6dp"
+            android:src="@drawable/more"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itmAdmin_Name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.mylibrary.api.widget.ItemView
+            android:id="@+id/itmAdmin_Mob"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            app:item_leftText="@string/mob"
+            app:item_leftTextColor="@color/contentColor"
+            app:item_leftTextSize="@dimen/text_Size3"
+            app:item_rightTextPadding="6dp"
+            app:item_rightTextSize="14sp"
+            app:setRightText="@{data.admin_Mob}"
+            app:layout_constraintBottom_toBottomOf="@+id/itmAdmin_Call"
+            app:layout_constraintEnd_toStartOf="@+id/itmAdmin_Call"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/itmAdmin_Call" />
+
+        <ImageView
+            android:id="@+id/itmAdmin_Call"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="6dp"
+            android:padding="6dp"
+            android:src="@drawable/call_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itmAdmin_More" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

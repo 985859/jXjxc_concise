@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.DebtManageBean" />
+
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:context=".activity.DebtActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/debtManage_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@color/white"
+            app:attr_LeftIcon="@drawable/return_g"
+            app:attr_Title="@string/debt_statistics"
+            app:attr_TitleColor="@color/textColor"
+            app:setToptTilte="@{type==2?@string/on_credit_statistics:@string/debt_statistics}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+
+                    <include
+                        layout="@layout/layout_amount"
+                        app:amount="@{data.debtNow}"
+                        app:endColor="@{@color/blue2}"
+                        app:startColor="@{@color/blue}"
+                        app:title="@{type==2?@string/on_creditAmount2:@string/debt_Amount2}" />
+
+                    <include
+                        layout="@layout/layout_amount"
+                        app:amount="@{data.debtAll}"
+                        app:endColor="@{@color/orage2}"
+                        app:startColor="@{@color/red}"
+                        app:title="@{type==2?@string/on_credit_all2:@string/debt_all2}" />
+
+                    <include
+                        layout="@layout/layout_amount"
+                        app:amount="@{data.repayAll}"
+                        app:endColor="@{@color/green}"
+                        app:startColor="@{@color/green2}"
+                        app:title="@{@string/have_to_repay}" />
+
+
+                    <com.mylibrary.api.widget.ItemView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{()->onClick.accept(0)}"
+                        android:padding="@dimen/margin3"
+                        app:gravity="center"
+                        app:item_leftText="最近记录"
+                        app:item_leftTextColor="@color/textColor"
+                        app:item_leftTextSize="@dimen/text_Size3"
+                        app:item_leftWight="0"
+                        app:item_rightText="查看更多明细 >"
+                        app:item_rightTextColor="@color/gray4"
+                        app:item_rightTextGravity="end"
+                        app:item_rightTextSize="@dimen/text_Size2"
+                        app:item_rightWight="1" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/debtManage_Rec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.OrderInfoBean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:gravity="bottom"
+            app:item_leftText="@string/no"
+            app:item_leftTextColor="@color/blue"
+            app:item_leftTextMinWidth="50dp"
+            app:item_leftTextSize="@dimen/text_Size3"
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="12dp"
+            app:item_rightTextSize="@dimen/text_Size3"
+            app:setRightText="@{data.order_No}" />
+
+        <com.mylibrary.api.widget.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:gravity="bottom"
+            app:item_leftText="@string/add_time"
+            app:item_leftTextColor="@color/blue"
+            app:item_leftTextMinWidth="50dp"
+            app:item_leftTextSize="@dimen/text_Size3"
+            app:item_rightText=""
+            app:item_rightTextColor="@color/textColor"
+            app:item_rightTextPadding="8dp"
+            app:item_rightTextSize="@dimen/text_Size3"
+            app:setRightText="@{data.order_AddDate}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility='@{data.order_State==0?View.VISIBLE:View.GONE}'>
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/inStockDetail_HongState"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+
+                app:gravity="bottom"
+                app:item_leftText="红冲"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="50dp"
+                app:item_leftTextSize="@dimen/text_Size3"
+                app:item_rightText=" 已红冲"
+                app:item_rightTextColor="@color/red"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size3"
+                app:layout_constraintEnd_toStartOf="@+id/inStockDetail_HongName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/inStockDetail_HongName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                app:gravity="bottom"
+                app:item_leftText="红冲人"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="50dp"
+                app:item_leftTextSize="@dimen/text_Size3"
+                app:item_rightText=""
+                app:item_rightTextColor="@color/red"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/inStockDetail_HongState"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setRightText="@{data.order_Hong_Name}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/inStockDetail_HongDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:gravity="bottom"
+                app:item_leftText="红冲时间"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="50dp"
+                app:item_leftTextSize="@dimen/text_Size3"
+                app:item_rightText=""
+                app:item_rightTextColor="@color/red"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inStockDetail_HongName"
+                app:setRightText="@{data.order_HongDate}" />
+
+            <com.mylibrary.api.widget.ItemView
+                android:id="@+id/inStockDetail_HongMemo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:gravity="bottom"
+                app:item_leftText="红冲原因"
+                app:item_leftTextColor="@color/blue"
+                app:item_leftTextMinWidth="50dp"
+                app:item_leftTextSize="@dimen/text_Size3"
+                app:item_rightText=""
+                app:item_rightTextColor="@color/red"
+                app:item_rightTextPadding="8dp"
+                app:item_rightTextSize="@dimen/text_Size3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inStockDetail_HongDate"
+                app:setRightText="@{data.order_Hong_Memo}" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>

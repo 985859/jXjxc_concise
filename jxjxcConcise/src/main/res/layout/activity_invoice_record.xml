@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.InvoiceRecordBean" />
+
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.InvoiceRecordActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/invoiceRecord_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_Title="@string/invoice_record" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+
+                    android:orientation="vertical">
+
+                    <com.mylibrary.api.widget.ItemView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:item_leftText="订单编号"
+                        app:item_leftTextColor="@color/blue"
+                        app:item_leftTextMinWidth="50dp"
+                        app:item_leftTextSize="@dimen/text_Size2"
+                        app:item_rightTextPadding="6dp"
+                        app:setRightText="@{data.no}" />
+
+                    <com.mylibrary.api.widget.ItemView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:item_leftText="客户名称"
+                        app:item_leftTextColor="@color/blue"
+                        app:item_leftTextMinWidth="50dp"
+                        app:item_leftTextSize="@dimen/text_Size2"
+                        app:item_rightTextPadding="6dp"
+                        app:setRightText="@{data.comName}" />
+
+                    <include
+                        layout="@layout/layout_type_view"
+                        app:color="@{data.invoiceState==0?@color/yellow:@color/red}"
+                        app:text="@{data.invoiceState==0?@string/invoice_type:@string/invoice_type1}"
+                        app:textColor="@{@color/white}"
+                        app:title="@{@string/invoice_state}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin3"
+                    android:layout_marginTop="@dimen/margin3"
+                    android:layout_marginEnd="@dimen/margin3"
+                    android:orientation="horizontal">
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_white_tr_20"
+                        android:padding="@dimen/padding3"
+                        app:priceView_Edit="false"
+                        app:priceView_IconSize="16dp"
+                        app:priceView_ShowLine="true"
+                        app:setEditText="@{data.amount}"
+                        app:title="@string/all_amout" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_white_tl_20"
+                        android:hint="@string/hint_amount"
+                        android:padding="@dimen/padding3"
+                        app:priceView_Edit="false"
+                        app:priceView_IconSize="16dp"
+                        app:priceView_ShowLine="true"
+                        app:setEditText="@{data.payableAmount}"
+                        app:title="@{type==1?@string/payable_amout:@string/receivable_amount}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin3"
+                    android:layout_marginTop="@dimen/margin3"
+                    android:layout_marginEnd="@dimen/margin3"
+                    android:orientation="horizontal">
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_white_tr_20"
+                        android:padding="@dimen/padding3"
+                        app:priceView_Edit="false"
+                        app:priceView_IconSize="16dp"
+                        app:priceView_ShowLine="true"
+                        app:setEditText="@{data.relayPayableAmount}"
+                        app:title="@{type==1?@string/out_amount2:@string/actual_amount2}" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_white_tl_20"
+                        android:padding="@dimen/padding3"
+                        app:priceView_Edit="false"
+                        app:priceView_IconSize="16dp"
+                        app:priceView_ShowLine="true"
+                        app:setEditText="@{data.invoiceMoney}"
+                        app:title="@string/invoice_all_amount" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right|center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/invoice_list"
+                            android:textColor="@color/blue" />
+
+                        <com.mylibrary.api.widget.VariedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:drawableLeft="@drawable/delete_w"
+                            android:drawablePadding="4dp"
+                            android:onClick="@{()->onClick.accept(1)}"
+                            android:paddingStart="12dp"
+                            android:paddingTop="3dp"
+                            android:paddingEnd="12dp"
+                            android:paddingBottom="3dp"
+                            android:text="@string/invoice_type"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_Size2"
+                            android:visibility="@{data.invoiceState==1?View.VISIBLE:View.GONE}"
+                            app:attr_background="@color/yellow"
+                            app:attr_cornersRaius="@dimen/radius3"
+                            app:attr_drawableLeftHeight="12dp"
+                            app:attr_drawableLeftWidth="12dp" />
+
+                        <com.mylibrary.api.widget.VariedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/add_white"
+                            android:drawablePadding="4dp"
+                            android:onClick="@{()->onClick.accept(0)}"
+                            android:paddingStart="12dp"
+                            android:paddingTop="3dp"
+                            android:paddingEnd="12dp"
+                            android:paddingBottom="3dp"
+                            android:text="@string/invoice_add"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_Size2"
+                            android:visibility="@{data.invoiceState==1?View.VISIBLE:View.GONE}"
+                            app:attr_background="@color/blue"
+                            app:attr_cornersRaius="@dimen/radius3"
+                            app:attr_drawableLeftHeight="12dp"
+                            app:attr_drawableLeftWidth="12dp" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/invoiceRecord_Rec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

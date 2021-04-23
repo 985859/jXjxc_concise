@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="repayMoney"
+            type="String" />
+
+        <variable
+            name="memo"
+            type="String" />
+
+        <variable
+            name="data"
+            type="com.yiande.jxjxc.bean.DebtDaetailBean" />
+
+        <import type="android.view.View" />
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        tools:context=".activity.DebtDetailActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/debtDetail_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_Title="@string/debt_detail"
+            app:setToptTilte="@{type==2?@string/on_credit_detail:@string/debt_detail}" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/LayoutStyle"
+                    android:divider="@drawable/line_2px"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="8dp">
+
+                        <com.mylibrary.api.widget.ItemView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:visibility="@{StringUtil.isNotEmpty(data.no)?View.VISIBLE:View.GONE}"
+                            app:item_leftText="@string/debt_no"
+                            app:item_leftTextColor="@color/blue"
+                            app:item_leftTextMinWidth="56dp"
+                            app:item_leftTextSize="@dimen/text_Size3"
+                            app:item_rightText="000"
+                            app:item_rightTextPadding="6dp"
+                            app:item_rightTextSize="@dimen/text_Size3"
+                            app:setItemLeftText="@{type==2?@string/on_credit_no:@string/debt_no}"
+                            app:setRightText="@{data.no}" />
+
+                        <com.mylibrary.api.widget.ItemView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:item_leftText="@string/debt_time"
+                            app:item_leftTextColor="@color/blue"
+                            app:item_leftTextMinWidth="56dp"
+                            app:item_leftTextSize="@dimen/text_Size3"
+                            app:item_rightText="000"
+                            app:item_rightTextPadding="6dp"
+                            app:item_rightTextSize="@dimen/text_Size3"
+                            app:setItemLeftText="@{type==2?@string/on_credit_time:@string/debt_time}"
+                            app:setRightText="@{data.AddDate}" />
+
+                        <com.mylibrary.api.widget.ItemView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            app:item_leftText="@string/handlerName"
+                            app:item_leftTextColor="@color/blue"
+                            app:item_leftTextMinWidth="56dp"
+                            app:item_leftTextSize="@dimen/text_Size3"
+                            app:item_rightText="000"
+                            app:item_rightTextColor="@color/textColor"
+                            app:item_rightTextPadding="6dp"
+                            app:item_rightTextSize="@dimen/text_Size3"
+                            app:setRightText="@{data.adminName}" />
+
+                        <com.mylibrary.api.widget.ItemView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            app:item_leftText="@string/client"
+                            app:item_leftTextColor="@color/blue"
+                            app:item_leftTextMinWidth="56dp"
+                            app:item_leftTextSize="@dimen/text_Size3"
+                            app:item_rightText="000"
+                            app:item_rightTextColor="@color/textColor"
+                            app:item_rightTextPadding="6dp"
+                            app:item_rightTextSize="@dimen/text_Size3"
+                            app:setItemLeftText="@{type==2?@string/supplier:@string/client}"
+                            app:setRightText="@{data.comName}" />
+
+                    </LinearLayout>
+
+                    <com.yiande.jxjxc.view.ItemTextView
+                        style="@style/ViewStyle"
+                        android:visibility="@{StringUtil.isNotEmpty(data.memo)?View.VISIBLE:View.GONE}"
+                        app:setText="@{data.memo}"
+                        app:title="@string/memo" />
+
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/debtDetail_Money"
+                        style="@style/ViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{data.isDone==0?View.VISIBLE:View.GONE}"
+                        app:priceView_Edit="false"
+                        app:priceView_ShowLine="false"
+                        app:setEditText="@{data.debtNowMoney}"
+                        app:title="@{type==2?@string/on_creditAmount2:@string/debt_Amount2}" />
+
+                    <com.yiande.jxjxc.view.PriceView
+                        android:id="@+id/debtDetail_RepayMoney"
+                        style="@style/ViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/repayment_hint"
+                        android:visibility="@{data.isDone==0?View.VISIBLE:View.GONE}"
+                        app:must="1"
+                        app:priceView_ShowLine="false"
+                        app:setEditText="@={repayMoney}"
+                        app:title="@string/repayment_amount" />
+
+                    <include
+                        layout="@layout/layout_type_view"
+                        app:color="@{data.isDone==0?@color/yellow:@color/green}"
+                        app:text="@{data.isDone==0?@string/pay_off_not:@string/pay_off}"
+                        app:title="@{@string/state}" />
+
+                </LinearLayout>
+
+                <com.yiande.jxjxc.view.EditLengthView
+                    style="@style/LayoutStyle"
+                    android:hint="@string/repayment_memo_hint"
+                    android:maxLength="300"
+                    android:visibility="@{data.isDone==0?View.VISIBLE:View.GONE}"
+                    app:setEditText="@={memo}"
+                    app:title="@string/repayment_memo" />
+
+
+                <com.mylibrary.api.widget.VariedTextView
+                    android:id="@+id/debtDetail_Post"
+                    android:layout_width="@dimen/buttonWidth"
+                    android:layout_height="@dimen/buttonHeight"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="18dp"
+                    android:gravity="center"
+                    android:text="@string/repayment_post"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_Size4"
+                    android:visibility="@{data.isDone==0?View.VISIBLE:View.GONE}"
+                    app:attr_background="@color/green"
+                    app:attr_cornersRaius="@dimen/radius3" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/debtDetail_Rec"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+</layout>

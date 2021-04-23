@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="amount"
+            type="String" />
+
+        <variable
+            name="startColor"
+            type="Integer" />
+
+        <variable
+            name="endColor"
+            type="Integer" />
+
+        <import type="com.mylibrary.api.utils.StringUtil" />
+    </data>
+
+    <com.mylibrary.api.widget.VariedLinearLayout
+        style="@style/MarginStyle3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:attr_bottomLeftRadius="@dimen/radius"
+        app:attr_bottomRightRadius="@dimen/radius3"
+        app:attr_topLeftRadius="@dimen/radius"
+        app:attr_topRightRadius="@dimen/radius"
+        app:endColor="@{endColor}"
+        app:startColor="@{startColor}">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:gravity="bottom"
+            android:text="@{title}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_Size5" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="(元)"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_Size4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:gravity="bottom"
+            android:text='@{StringUtil.isEmpty(amount)?"0":amount}'
+            android:textColor="@color/white"
+            android:textSize="25dp" />
+    </com.mylibrary.api.widget.VariedLinearLayout>
+</layout>

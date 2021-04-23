@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="onClick"
+            type="com.yiande.jxjxc.myInterface.EventConsume" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.SetActivity">
+
+        <com.mylibrary.api.widget.TopView
+            android:id="@+id/set_Top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topHight"
+            android:background="@drawable/top_background"
+            app:attr_Title="@string/set" />
+
+
+        <com.yiande.jxjxc.view.TypeView
+            style="@style/LayoutStyle"
+            android:hint="建议您定期更改密码以保护账户安全"
+            android:onClick="@{()->onClick.accept(1)}"
+            app:title="修改密码" />
+
+        <com.yiande.jxjxc.view.TypeView
+            android:id="@+id/set_IP"
+            style="@style/LayoutStyle"
+            android:hint=""
+            android:onClick="@{()->onClick.accept(0)}"
+            app:title="设置IP地址" />
+
+
+        <Button
+            style="@style/buttonStyle"
+            android:layout_marginTop="100dp"
+            android:onClick="@{()->onClick.accept(2)}"
+            android:text="@string/esc" />
+
+    </LinearLayout>
+</layout>
